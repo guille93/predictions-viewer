@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Football Predictions Viewer</title>
     <style>
         :root {
@@ -91,7 +92,85 @@
         tr:hover {
             background-color: #f1f4ff;
         }
-    </style>
+    
+    .table-container {
+        overflow-x: auto;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem;
+        }
+
+        .filter {
+            padding: 1rem;
+        }
+
+        select {
+            width: 100%;
+            max-width: none;
+        }
+
+        table {
+            font-size: 14px;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 0.8rem 0.5rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        body { padding: 0.5rem; }
+        .filter { padding: 1rem 0.8rem; }
+        select { padding: 1rem; font-size: 16px; }
+        .table-container { margin: 0 -0.5rem; }
+    }
+
+    @media (max-width: 480px) {
+        header { padding: 1.5rem; }
+        h1 { font-size: 1.5rem; }
+        table { min-width: 800px; }
+        th, td { padding: 0.8rem; }
+    }
+
+    @media (max-width: 400px) {
+        .filter-title { font-size: 1.2rem; }
+        .filter-icon { width: 50px; height: 50px; }
+        th { font-size: 12px; }
+        td { font-size: 13px; }
+    }
+
+    @media (max-width: 360px) {
+        h1 { font-size: 1.3rem; }
+        .match-date { font-size: 0.9rem; }
+        .match-teams { font-size: 0.95rem; }
+    }
+
+    /* Scroll suave para tablas */
+    .table-container {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    /* Mejoras de tactilidad */
+    select {
+        min-height: 50px;
+    }
+     {
+        table {
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 0.6rem 0.4rem;
+        }
+    }
+
+</style>
 </head>
 <body>
     <div class="container">
@@ -108,7 +187,8 @@
             </select>
         </div>
 
-        <div id="matchesContainer">
+        <div class="table-container">
+<div id="matchesContainer">
             <table>
                 <thead>
                     <tr>
@@ -122,6 +202,7 @@
                 </tbody>
             </table>
         </div>
+</div>
     </div>
 
     <script>
