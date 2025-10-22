@@ -405,6 +405,25 @@
             });
         }
 
+        // Función para obtener la fecha por defecto (hoy o la más próxima futura)
+        function getDefaultDate(uniqueDates) {
+            const today = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+            
+            // Si hoy está en las fechas disponibles, usarla
+            if (uniqueDates.includes(today)) {
+                return today;
+            }
+            
+            // Si no, buscar la fecha futura más próxima
+            const futureDates = uniqueDates.filter(date => date >= today);
+            if (futureDates.length > 0) {
+                return futureDates[0];
+            }
+            
+            // Si no hay fechas futuras, usar la última fecha disponible
+            return uniqueDates[uniqueDates.length - 1];
+        }
+
         // Función para generar las opciones del filtro ordenadas cronológicamente
         function generateDateFilterOptions() {
             const dateFilter = document.getElementById('dateFilter');
@@ -414,6 +433,9 @@
             
             // Ordenar las fechas cronológicamente
             uniqueDates.sort((a, b) => new Date(a) - new Date(b));
+            
+            // Obtener la fecha por defecto
+            const defaultDate = getDefaultDate(uniqueDates);
             
             // Limpiar el select
             dateFilter.innerHTML = '';
@@ -429,8 +451,16 @@
                 const option = document.createElement('option');
                 option.value = date;
                 option.textContent = date;
+                
+                // Marcar como seleccionada si es la fecha por defecto
+                if (date === defaultDate) {
+                    option.selected = true;
+                }
+                
                 dateFilter.appendChild(option);
             });
+            
+            return defaultDate;
         }
 
         // Función de filtrado
@@ -457,8 +487,13 @@
 
         // Inicializar la página
         function init() {
-            generateDateFilterOptions();
+            const defaultDate = generateDateFilterOptions();
             createMatchCards();
+            
+            // Si hay una fecha por defecto, filtrar por ella
+            if (defaultDate) {
+                filterMatches();
+            }
         }
 
         // Ejecutar la inicialización al cargar la página
