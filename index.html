@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porra Champions League</title>
     <style>
         :root {
@@ -24,155 +25,154 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: var(--dark);
             min-height: 100vh;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            overflow-x: auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 2.5rem;
-            padding: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             color: white;
         }
 
-        .filter {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    font-size: x-large;
+        h1 {
+            font-size: 1.8rem;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .filter {
             background: white;
+            padding: 1.2rem;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            min-width: 800px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            font-size: 1.1rem;
         }
 
-        th, td {
-            padding: 1rem;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-
-        th {
-            background: var(--primary);
-            color: white;
-            position: sticky;
-            top: 0;
-        }
-
-        .match-date {
-            background: var(--secondary);
-            color: white;
+        .filter label {
+            display: block;
+            margin-bottom: 0.5rem;
             font-weight: bold;
-        }
-
-        .match-teams {
-            background: var(--light);
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8f9fc;
-        }
-
-        tr:hover {
-            background-color: #f1f4ff;
-        }
-    
-    .table-container {
-        overflow-x: auto;
-        margin: 0 -1rem;
-        padding: 0 1rem;
-    }
-
-    @media (max-width: 768px) {
-        body {
-            padding: 1rem;
-        }
-
-        .filter {
-            padding: 1rem;
         }
 
         select {
             width: 100%;
-            max-width: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 1rem;
+            background-color: white;
         }
 
-        table {
-            font-size: 14px;
-            min-width: 600px;
+        .match-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
 
-        th, td {
-            padding: 0.8rem 0.5rem;
-        }
-    }
-
-    @media (max-width: 600px) {
-        body { padding: 0.5rem; }
-        .filter { padding: 1rem 0.8rem; }
-        select { padding: 1rem; font-size: 16px; }
-        .table-container { margin: 0 -0.5rem; }
-    }
-
-    @media (max-width: 480px) {
-        header { padding: 1.5rem; }
-        h1 { font-size: 1.5rem; }
-        table { min-width: 800px; }
-        th, td { padding: 0.8rem; }
-    }
-
-    @media (max-width: 400px) {
-        .filter-title { font-size: 1.2rem; }
-        .filter-icon { width: 50px; height: 50px; }
-        th { font-size: 12px; }
-        td { font-size: 13px; }
-    }
-
-    @media (max-width: 360px) {
-        h1 { font-size: 1.3rem; }
-        .match-date { font-size: 0.9rem; }
-        .match-teams { font-size: 0.95rem; }
-    }
-
-    /* Scroll suave para tablas */
-    .table-container {
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-    }
-
-    /* Mejoras de tactilidad */
-    select {
-    min-height: 50px;
-    font-size: large;
-    }
-     {
-        table {
-            font-size: 13px;
+        .match-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        th, td {
-            padding: 0.6rem 0.4rem;
+        .match-date {
+            font-weight: bold;
+            font-size: 1rem;
+            background-color: var(--secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
         }
-    }
 
-</style>
+        .match-teams {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .predictions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.5rem;
+            padding: 1rem;
+        }
+
+        .prediction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background-color: #f8f9fc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .prediction-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .participant-name {
+            font-weight: bold;
+        }
+
+        .prediction-result {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .no-matches {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .match-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .predictions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .predictions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .predictions-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .predictions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -183,42 +183,286 @@
         <div class="filter">
             <label for="dateFilter">Filtrar por fecha:</label>
             <select id="dateFilter" onchange="filterMatches()">
-                <option value="all">Selecciona una fecha</option>
-                <option value="2025-09-16">2025-09-16</option><option value="2025-09-17">2025-09-17</option><option value="2025-09-18">2025-09-18</option><option value="2025-09-30">2025-09-30</option><option value="2025-10-01">2025-10-01</option><option value="2025-10-21">2025-10-21</option><option value="2025-10-22">2025-10-22</option><option value="2025-11-04">2025-11-04</option><option value="2025-11-05">2025-11-05</option><option value="2025-11-25">2025-11-25</option><option value="2025-11-26">2025-11-26</option><option value="2025-12-09">2025-12-09</option><option value="2025-12-10">2025-12-10</option><option value="2026-01-20">2026-01-20</option><option value="2026-01-21">2026-01-21</option><option value="2026-01-28">2026-01-28</option>
+                <!-- Las opciones se generarán dinámicamente con JavaScript -->
             </select>
         </div>
 
-        <div class="table-container">
-<div id="matchesContainer">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Partido</th>
-                        <th>XAVI</th><th>CHARLY</th><th>POTI</th><th>TONI</th><th>CHETE</th><th>LUIS IRISH</th><th>PEPE</th><th>PILAR</th><th>YERAY</th><th>LUISETE</th><th>SALME</th><th>CLAU</th><th>COPILOT</th><th>GUILLE</th><th>PERICO</th><th>CARLOS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">Athletic Bilbao-Arsenal</td><td>2|1-3</td><td>X|1-1</td><td>2|0-3</td><td>2|1-3</td><td>X|1-1</td><td>2|0-3</td><td>X|2-2</td><td>2|1-2</td><td>2|1-3</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">PSV Eindhoven-Union Saint-Gilloise</td><td>1|4-0</td><td>1|1-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>1|1-0</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">Juventus-Borussia Dortmund</td><td>X|1-1</td><td>2|1-2</td><td>1|2-1</td><td>X|2-2</td><td>X|0-0</td><td>X|1-1</td><td>2|1-2</td><td>1|3-2</td><td>X|1-1</td><td>1|2-1</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">Real Madrid-Marseille</td><td>1|3-1</td><td>1|1-0</td><td>1|4-1</td><td>1|2-0</td><td>1|3-1</td><td>1|2-1</td><td>1|3-1</td><td>1|3-1</td><td>1|2-0</td><td>1|4-0</td><td>1|3-1</td><td>1|3-1</td><td>1|3-1</td><td>1|3-1</td><td>1|2-1</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">Benfica-Qarabağ</td><td>1|5-1</td><td>1|2-0</td><td>1|2-0</td><td>1|1-0</td><td>X|2-2</td><td>1|4-0</td><td>1|3-0</td><td>1|4-1</td><td>1|4-0</td><td>1|3-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-09-16"><td class="match-date">2025-09-16</td><td class="match-teams">Tottenham-Villarreal</td><td>1|3-1</td><td>1|3-1</td><td>1|3-1</td><td>2|2-3</td><td>2|1-3</td><td>1|3-1</td><td>1|2-1</td><td>2|2-3</td><td>1|3-1</td><td>1|2-0</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>1|2-0</td><td>1|4-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">Olympiakos-Pafos</td><td>1|2-0</td><td>X|0-0</td><td>1|3-1</td><td>1|3-1</td><td>X|1-1</td><td>1|3-0</td><td>1|4-0</td><td>X|2-2</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|3-0</td><td>X|1-1</td><td>1|2-0</td><td>1|3-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">Slavia Praha-Bodø/Glimt</td><td>X|2-2</td><td>2|1-2</td><td>1|2-0</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>1|3-1</td><td>2|0-2</td><td>X|2-2</td><td>1|2-0</td><td>2|1-2</td><td>X|1-1</td><td>2|0-1</td><td>X|1-1</td><td>1|2-0</td><td>1|1-0</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">Ajax-Inter Milan</td><td>X|1-1</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>2|2-4</td><td>X|2-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">Bayern München-Chelsea</td><td>X|3-3</td><td>1|3-2</td><td>1|2-0</td><td>1|3-2</td><td>X|2-2</td><td>1|2-1</td><td>1|2-0</td><td>2|2-3</td><td>2|1-2</td><td>1|3-0</td><td>1|3-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">Liverpool-Atlético Madrid</td><td>1|4-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>1|3-0</td><td>1|2-1</td><td>2|1-2</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-09-17"><td class="match-date">2025-09-17</td><td class="match-teams">PSG-Atalanta</td><td>1|3-0</td><td>1|4-1</td><td>1|3-1</td><td>1|3-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|3-2</td><td>1|1-0</td><td>1|3-0</td><td>1|3-1</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>1|4-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Brugge-Monaco</td><td>2|0-2</td><td>X|2-2</td><td>2|0-2</td><td>2|0-2</td><td>X|1-1</td><td>X|0-0</td><td>X|1-1</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>1|1-0</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Copenhagen-Bayer Leverkusen</td><td>2|0-1</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>1|3-1</td><td>1|1-0</td><td>2|0-3</td><td>2|1-2</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>2|0-3</td><td>2|0-1</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Eintracht Frankfurt-Galatasaray</td><td>X|2-2</td><td>X|2-2</td><td>2|1-2</td><td>1|2-1</td><td>X|2-2</td><td>1|2-0</td><td>1|2-0</td><td>2|0-1</td><td>X|2-2</td><td>1|2-0</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Manchester City-Napoli</td><td>1|3-2</td><td>1|3-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>X|2-2</td><td>1|3-1</td><td>1|2-0</td><td>X|2-2</td><td>1|3-0</td><td>1|3-1</td><td>X|2-2</td><td>1|3-1</td><td>1|3-1</td><td>2|1-2</td><td>1|3-2</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Newcastle-Barcelona</td><td>2|1-2</td><td>2|1-4</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-4</td><td>2|1-2</td><td>2|1-3</td><td>1|2-1</td><td>2|0-3</td><td>1|2-1</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-18"><td class="match-date">2025-09-18</td><td class="match-teams">Sporting Portugal-Kairat Almaty </td><td>1|3-0</td><td>1|2-0</td><td>1|1-0</td><td>1|2-0</td><td>1|2-0</td><td>1|4-0</td><td>1|3-0</td><td>X|2-2</td><td>1|2-0</td><td>1|4-0</td><td>1|3-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Atalanta-Brugge</td><td>2|0-2</td><td>1|1-0</td><td>1|2-1</td><td>X|1-1</td><td>X|0-0</td><td>1|2-1</td><td>1|2-0</td><td>2|0-1</td><td>1|2-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>X|1-1</td><td>1|1-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Kairat Almaty -Real Madrid</td><td>2|1-3</td><td>2|1-4</td><td>2|0-5</td><td>2|0-4</td><td>2|1-5</td><td>2|0-4</td><td>2|0-4</td><td>2|0-3</td><td>2|0-3</td><td>2|0-3</td><td>2|1-2</td><td>2|0-3</td><td>2|0-3</td><td>2|0-2</td><td>2|0-2</td><td>2|0-4</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Atlético Madrid-Eintracht Frankfurt</td><td>X|2-2</td><td>1|3-1</td><td>1|3-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>1|3-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Chelsea-Benfica</td><td>1|3-1</td><td>1|3-1</td><td>1|4-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>1|3-2</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Inter Milan-Slavia Praha</td><td>1|4-0</td><td>1|2-0</td><td>1|3-2</td><td>1|2-0</td><td>1|2-1</td><td>1|3-1</td><td>1|2-0</td><td>1|1-0</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|3-1</td><td>1|1-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Bodø/Glimt-Tottenham</td><td>2|1-3</td><td>2|0-1</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>2|0-4</td><td>2|0-1</td><td>X|2-2</td><td>2|0-1</td><td>2|0-3</td><td>2|1-3</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>2|0-2</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Galatasaray-Liverpool</td><td>2|2-4</td><td>2|1-2</td><td>X|1-1</td><td>2|1-4</td><td>2|1-4</td><td>2|1-3</td><td>2|1-3</td><td>2|2-3</td><td>X|2-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Marseille-Ajax</td><td>X|1-1</td><td>X|2-2</td><td>X|1-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>1|1-0</td><td>2|1-2</td><td>2|2-3</td><td>X|1-1</td><td>1|2-1</td><td>2|1-2</td><td>X|2-2</td><td>X|1-1</td><td>X|0-0</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-09-30"><td class="match-date">2025-09-30</td><td class="match-teams">Pafos-Bayern München</td><td>2|0-5</td><td>2|0-3</td><td>2|0-6</td><td>2|0-8</td><td>2|1-3</td><td>2|0-5</td><td>2|0-5</td><td>2|2-3</td><td>2|1-4</td><td>2|0-3</td><td>2|0-3</td><td>2|0-3</td><td>2|0-4</td><td>2|0-3</td><td>2|0-4</td><td>2|0-5</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Qarabağ-Copenhagen</td><td>X|2-2</td><td>1|2-0</td><td>X|1-1</td><td>X|2-2</td><td>X|1-1</td><td>X|1-1</td><td>1|1-0</td><td>2|2-4</td><td>1|2-1</td><td>2|0-2</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-2</td><td>X|2-2</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Union Saint-Gilloise-Newcastle</td><td>2|0-3</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td><td>2|1-3</td><td>2|0-2</td><td>2|0-1</td><td>2|1-2</td><td>2|1-2</td><td>1|2-1</td><td>1|1-0</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Arsenal-Olympiakos</td><td>1|4-1</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|4-3</td><td>1|2-1</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Monaco-Manchester City</td><td>2|1-4</td><td>2|1-3</td><td>2|1-4</td><td>2|1-2</td><td>2|1-2</td><td>2|0-1</td><td>2|1-2</td><td>2|2-3</td><td>2|1-3</td><td>2|0-3</td><td>X|2-2</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>2|0-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Bayer Leverkusen-PSV Eindhoven</td><td>X|2-2</td><td>1|2-1</td><td>X|0-0</td><td>X|1-1</td><td>1|1-0</td><td>1|2-1</td><td>X|1-1</td><td>2|1-3</td><td>X|2-2</td><td>1|3-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|1-0</td><td>X|1-1</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Borussia Dortmund-Athletic Bilbao</td><td>1|3-1</td><td>1|3-1</td><td>1|3-1</td><td>1|1-0</td><td>X|2-2</td><td>1|2-1</td><td>2|1-2</td><td>1|2-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>X|1-1</td><td>1|1-0</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Barcelona-PSG</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>1|1-0</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>1|3-2</td><td>1|2-1</td><td>2|2-3</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>2|1-2</td><td>X|3-3</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Napoli-Sporting Portugal</td><td>1|4-1</td><td>X|1-1</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|3-2</td><td>1|1-0</td><td>2|2-3</td><td>1|2-0</td><td>1|2-0</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>2|1-2</td><td>1|1-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-10-01"><td class="match-date">2025-10-01</td><td class="match-teams">Villarreal-Juventus</td><td>X|2-2</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>2|0-1</td><td>1|2-1</td><td>2|0-2</td><td>1|2-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-2</td><td>1|1-0</td><td>1|3-2</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Barcelona-Olympiakos</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|4-0</td><td>1|4-1</td><td>1|4-1</td><td>1|2-0</td><td>X|2-2</td><td>1|3-0</td><td>1|3-0</td><td>1|4-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-1</td><td>1|5-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Kairat Almaty -Pafos</td><td>X|1-1</td><td>2|2-3</td><td>2|0-2</td><td>2|1-2</td><td>X|0-0</td><td>X|2-2</td><td>1|2-1</td><td>1|3-2</td><td>X|0-0</td><td>X|1-1</td><td>X|1-1</td><td>2|0-2</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Arsenal-Atlético Madrid</td><td>1|3-1</td><td>X|1-1</td><td>1|2-0</td><td>1|3-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>2|1-2</td><td>2|2-3</td><td>1|2-1</td><td>1|3-1</td><td>2|1-2</td><td>X|2-2</td><td>2|1-2</td><td>2|0-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Bayer Leverkusen-PSG</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>2|1-4</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>1|3-1</td><td>X|1-1</td><td>1|2-1</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>1|2-1</td><td>2|0-1</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Copenhagen-Borussia Dortmund</td><td>2|0-2</td><td>2|2-3</td><td>2|0-3</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>2|0-1</td><td>2|0-1</td><td>2|1-3</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Newcastle-Benfica</td><td>1|2-0</td><td>X|2-2</td><td>1|1-0</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>2|1-3</td><td>2|1-2</td><td>1|2-0</td><td>2|0-2</td><td>2|1-2</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">PSV Eindhoven-Napoli</td><td>2|2-3</td><td>2|2-3</td><td>2|1-2</td><td>2|0-2</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>1|2-1</td><td>2|1-3</td><td>2|0-2</td><td>2|1-2</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>2|0-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Union Saint-Gilloise-Inter Milan</td><td>2|0-4</td><td>2|0-1</td><td>2|0-4</td><td>2|0-2</td><td>2|1-3</td><td>2|1-3</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|0-3</td><td>2|0-2</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>2|1-3</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-10-21"><td class="match-date">2025-10-21</td><td class="match-teams">Villarreal-Manchester City</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>X|2-2</td><td>2|2-3</td><td>2|1-3</td><td>2|1-3</td><td>2|0-2</td><td>2|0-3</td><td>2|1-3</td><td>X|1-1</td><td>2|1-2</td><td>2|1-3</td><td>2|0-3</td><td>2|2-4</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Athletic Bilbao-Qarabağ</td><td>1|3-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Galatasaray-Bodø/Glimt</td><td>1|4-1</td><td>1|1-0</td><td>1|2-0</td><td>1|1-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td><td>X|1-1</td><td>X|1-1</td><td>1|2-0</td><td>2|1-2</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Monaco-Tottenham</td><td>X|2-2</td><td>X|2-2</td><td>X|1-1</td><td>X|2-2</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>X|2-2</td><td>X|1-1</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>X|2-2</td><td>2|1-2</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Atalanta-Slavia Praha</td><td>X|1-1</td><td>X|1-1</td><td>1|2-0</td><td>1|2-1</td><td>2|2-3</td><td>1|2-0</td><td>1|2-0</td><td>2|1-3</td><td>1|2-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|1-0</td><td>1|2-0</td><td>1|1-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Chelsea-Ajax</td><td>1|4-2</td><td>1|2-1</td><td>1|3-0</td><td>1|4-1</td><td>1|3-1</td><td>1|3-1</td><td>1|3-1</td><td>1|3-2</td><td>1|3-1</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Eintracht Frankfurt-Liverpool</td><td>2|1-3</td><td>2|2-3</td><td>2|1-3</td><td>2|1-3</td><td>2|2-3</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|2-4</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-4</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Bayern München-Brugge</td><td>1|4-0</td><td>1|3-0</td><td>1|4-1</td><td>1|4-0</td><td>1|4-1</td><td>1|4-1</td><td>1|3-1</td><td>1|3-0</td><td>1|4-0</td><td>1|4-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|4-0</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Real Madrid-Juventus</td><td>1|3-2</td><td>1|3-2</td><td>X|1-1</td><td>1|3-1</td><td>X|1-1</td><td>1|2-1</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-0</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|1-0</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-10-22"><td class="match-date">2025-10-22</td><td class="match-teams">Sporting Portugal-Marseille</td><td>X|1-1</td><td>1|2-1</td><td>X|0-0</td><td>X|2-2</td><td>2|1-2</td><td>X|2-2</td><td>1|2-0</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>2|1-2</td><td>1|2-0</td><td>X|1-1</td><td>1|2-0</td><td>1|2-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Slavia Praha-Arsenal</td><td>X|1-1</td><td>2|1-2</td><td>2|1-4</td><td>2|1-4</td><td>2|1-3</td><td>2|0-2</td><td>2|1-3</td><td>2|1-3</td><td>2|0-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Napoli-Eintracht Frankfurt</td><td>1|1-0</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Atlético Madrid-Union Saint-Gilloise</td><td>1|4-0</td><td>1|3-0</td><td>1|4-1</td><td>1|4-1</td><td>1|4-1</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|1-0</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Bodø/Glimt-Monaco</td><td>X|1-1</td><td>2|1-3</td><td>2|1-3</td><td>X|3-3</td><td>2|1-2</td><td>2|0-1</td><td>2|1-3</td><td>2|0-1</td><td>2|1-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Juventus-Sporting Portugal</td><td>1|3-1</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-2</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|1-0</td><td>1|2-0</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Liverpool-Real Madrid</td><td>X|1-1</td><td>1|2-1</td><td>1|2-0</td><td>1|3-1</td><td>1|3-2</td><td>1|2-1</td><td>1|2-1</td><td>2|2-3</td><td>1|3-2</td><td>1|3-1</td><td>1|2-1</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>2|2-3</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Olympiakos-PSV Eindhoven</td><td>1|3-1</td><td>X|1-1</td><td>1|1-0</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td><td>X|1-1</td><td>2|0-2</td><td>2|1-2</td><td>1|1-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">PSG-Bayern München</td><td>X|1-1</td><td>X|2-2</td><td>1|1-0</td><td>1|3-2</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>X|0-0</td><td>1|3-1</td><td>1|3-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>2|2-3</td></tr><tr class="match-row" data-date="2025-11-04"><td class="match-date">2025-11-04</td><td class="match-teams">Tottenham-Copenhagen</td><td>1|3-0</td><td>1|2-0</td><td>1|3-1</td><td>1|2-0</td><td>1|2-1</td><td>1|2-0</td><td>X|1-1</td><td>1|2-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Pafos-Villarreal</td><td>2|1-2</td><td>2|0-2</td><td>2|0-2</td><td>2|1-3</td><td>2|1-3</td><td>2|0-3</td><td>2|1-3</td><td>2|2-3</td><td>2|1-2</td><td>2|0-3</td><td>2|1-2</td><td>2|0-2</td><td>2|0-1</td><td>2|0-2</td><td>2|0-1</td><td>2|0-4</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Qarabağ-Chelsea</td><td>2|1-5</td><td>2|1-3</td><td>2|1-4</td><td>2|1-3</td><td>2|1-4</td><td>2|0-4</td><td>2|0-4</td><td>2|1-4</td><td>X|1-1</td><td>2|0-3</td><td>2|1-3</td><td>2|0-2</td><td>2|1-3</td><td>2|1-2</td><td>2|0-1</td><td>2|1-4</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Ajax-Galatasaray</td><td>1|2-1</td><td>1|1-0</td><td>1|2-1</td><td>1|3-1</td><td>X|2-2</td><td>1|2-0</td><td>1|2-1</td><td>1|3-2</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>2|1-2</td><td>1|2-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Brugge-Barcelona</td><td>2|0-4</td><td>2|1-3</td><td>2|0-2</td><td>2|0-2</td><td>2|2-3</td><td>2|0-4</td><td>2|1-2</td><td>2|1-3</td><td>2|2-3</td><td>2|0-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>2|0-3</td><td>2|1-4</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Inter Milan-Kairat Almaty </td><td>1|5-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|1-0</td><td>1|3-0</td><td>1|4-0</td><td>1|2-0</td><td>1|2-0</td><td>1|4-0</td><td>1|3-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Manchester City-Borussia Dortmund</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-0</td><td>X|2-2</td><td>1|3-2</td><td>1|3-1</td><td>1|3-2</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-1</td><td>1|2-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Newcastle-Athletic Bilbao</td><td>X|1-1</td><td>X|1-1</td><td>2|1-2</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>2|0-1</td><td>1|3-2</td><td>1|3-1</td><td>1|2-0</td><td>1|3-1</td><td>1|2-0</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Marseille-Atalanta</td><td>1|3-2</td><td>X|2-2</td><td>X|0-0</td><td>1|1-0</td><td>1|2-0</td><td>1|2-0</td><td>1|1-0</td><td>X|2-2</td><td>1|2-0</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2025-11-05"><td class="match-date">2025-11-05</td><td class="match-teams">Benfica-Bayer Leverkusen</td><td>X|1-1</td><td>X|2-2</td><td>1|1-0</td><td>1|3-1</td><td>1|3-2</td><td>1|3-2</td><td>1|2-1</td><td>2|1-3</td><td>1|3-1</td><td>2|0-2</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td><td>2|1-2</td><td>1|1-0</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Ajax-Benfica</td><td>X|0-0</td><td>2|1-2</td><td>1|2-1</td><td>X|1-1</td><td>2|1-2</td><td>X|2-2</td><td>X|2-2</td><td>2|2-4</td><td>1|2-1</td><td>2|0-2</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>1|3-2</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Galatasaray-Union Saint-Gilloise</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|3-0</td><td>2|0-1</td><td>1|1-0</td><td>X|1-1</td><td>1|2-1</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Borussia Dortmund-Villarreal</td><td>1|4-1</td><td>1|2-1</td><td>1|2-0</td><td>2|1-2</td><td>1|2-0</td><td>1|1-0</td><td>2|1-2</td><td>1|2-0</td><td>X|2-2</td><td>1|2-0</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Chelsea-Barcelona</td><td>X|1-1</td><td>2|1-2</td><td>2|1-2</td><td>X|2-2</td><td>X|0-0</td><td>2|2-4</td><td>2|1-2</td><td>X|3-3</td><td>1|2-1</td><td>2|0-2</td><td>2|1-3</td><td>X|1-1</td><td>2|1-3</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Bodø/Glimt-Juventus</td><td>2|0-5</td><td>2|0-2</td><td>2|1-3</td><td>X|1-1</td><td>2|1-3</td><td>2|0-2</td><td>2|0-3</td><td>2|0-1</td><td>2|0-3</td><td>2|0-3</td><td>1|2-1</td><td>2|0-3</td><td>2|0-2</td><td>2|1-2</td><td>2|0-3</td><td>2|0-3</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Manchester City-Bayer Leverkusen</td><td>1|3-0</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|1-0</td><td>1|2-1</td><td>1|3-0</td><td>X|1-1</td><td>1|2-0</td><td>1|3-1</td><td>1|3-1</td><td>X|2-2</td><td>1|2-1</td><td>1|3-1</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Marseille-Newcastle</td><td>2|0-2</td><td>X|3-3</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|1-0</td><td>X|1-1</td><td>X|1-1</td><td>1|1-0</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Slavia Praha-Athletic Bilbao</td><td>2|0-1</td><td>2|1-3</td><td>2|0-1</td><td>2|0-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td><td>1|1-0</td><td>2|2-4</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>2|0-1</td><td>1|2-0</td><td>X|1-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-11-25"><td class="match-date">2025-11-25</td><td class="match-teams">Napoli-Qarabağ</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>1|3-0</td><td>1|4-1</td><td>1|2-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Copenhagen-Kairat Almaty </td><td>X|0-0</td><td>1|1-0</td><td>1|2-0</td><td>1|1-0</td><td>X|2-2</td><td>1|2-0</td><td>1|4-0</td><td>X|2-2</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>1|1-0</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Pafos-Monaco</td><td>2|0-1</td><td>2|1-3</td><td>2|1-3</td><td>X|1-1</td><td>X|1-1</td><td>2|0-1</td><td>2|0-3</td><td>1|3-1</td><td>2|0-2</td><td>2|0-3</td><td>2|1-2</td><td>2|0-2</td><td>2|0-2</td><td>2|0-2</td><td>2|0-2</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Arsenal-Bayern München</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|3-3</td><td>X|3-3</td><td>1|3-2</td><td>2|1-2</td><td>1|2-1</td><td>1|3-1</td><td>2|0-2</td><td>2|2-3</td><td>X|1-1</td><td>X|2-2</td><td>2|1-2</td><td>1|3-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Atlético Madrid-Inter Milan</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>1|1-0</td><td>1|2-1</td><td>1|1-0</td><td>2|2-3</td><td>X|2-2</td><td>2|0-2</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Eintracht Frankfurt-Atalanta</td><td>X|1-1</td><td>1|2-1</td><td>2|1-2</td><td>1|4-2</td><td>X|1-1</td><td>X|1-1</td><td>1|2-0</td><td>2|0-2</td><td>2|1-2</td><td>2|0-2</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Liverpool-PSV Eindhoven</td><td>1|3-0</td><td>1|3-1</td><td>1|2-1</td><td>1|4-2</td><td>1|2-0</td><td>1|2-1</td><td>1|2-0</td><td>1|4-3</td><td>1|3-2</td><td>1|4-0</td><td>1|3-1</td><td>1|2-1</td><td>1|3-1</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Olympiakos-Real Madrid</td><td>X|2-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td><td>2|2-3</td><td>2|0-3</td><td>2|0-3</td><td>2|1-3</td><td>2|1-3</td><td>2|0-3</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">PSG-Tottenham</td><td>1|3-2</td><td>1|3-2</td><td>1|3-0</td><td>1|2-1</td><td>1|3-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-1</td><td>X|1-1</td><td>1|3-0</td><td>1|3-1</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|3-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-11-26"><td class="match-date">2025-11-26</td><td class="match-teams">Sporting Portugal-Brugge</td><td>1|4-1</td><td>1|2-1</td><td>1|2-0</td><td>2|0-2</td><td>1|2-0</td><td>1|2-1</td><td>2|1-2</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>2|1-2</td><td>1|3-0</td><td>1|1-0</td><td>1|2-0</td><td>1|1-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Kairat Almaty -Olympiakos</td><td>2|0-2</td><td>2|1-3</td><td>2|0-2</td><td>X|1-1</td><td>X|0-0</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td><td>1|1-0</td><td>2|0-2</td><td>X|1-1</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>1|1-0</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Bayern München-Sporting Portugal</td><td>1|3-1</td><td>1|4-1</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>1|4-0</td><td>1|3-1</td><td>1|2-0</td><td>1|3-1</td><td>1|3-1</td><td>1|2-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Monaco-Galatasaray</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-0</td><td>X|1-1</td><td>1|1-0</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Atalanta-Chelsea</td><td>2|1-3</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>2|0-3</td><td>2|1-3</td><td>1|2-1</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Barcelona-Eintracht Frankfurt</td><td>1|4-0</td><td>1|3-1</td><td>1|4-0</td><td>1|3-1</td><td>1|5-1</td><td>1|4-1</td><td>1|2-0</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-1</td><td>1|4-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Inter Milan-Liverpool</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-2</td><td>X|2-2</td><td>2|1-2</td><td>2|0-1</td><td>2|2-3</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>2|1-2</td><td>2|1-2</td><td>X|2-2</td><td>X|1-1</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">PSV Eindhoven-Atlético Madrid</td><td>1|2-0</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td><td>X|2-2</td><td>2|2-3</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>X|2-2</td><td>1|2-1</td><td>2|1-3</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Union Saint-Gilloise-Marseille</td><td>2|0-2</td><td>2|1-3</td><td>2|1-2</td><td>2|0-1</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>1|1-0</td><td>2|0-2</td><td>2|0-2</td><td>2|0-2</td><td>2|1-3</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-12-09"><td class="match-date">2025-12-09</td><td class="match-teams">Tottenham-Slavia Praha</td><td>1|3-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-1</td><td>X|1-1</td><td>1|3-0</td><td>1|3-0</td><td>X|2-2</td><td>1|3-1</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|2-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Qarabağ-Ajax</td><td>1|2-1</td><td>X|2-2</td><td>2|0-1</td><td>X|2-2</td><td>X|1-1</td><td>2|0-1</td><td>2|0-3</td><td>X|3-3</td><td>X|2-2</td><td>2|0-3</td><td>2|1-3</td><td>2|0-3</td><td>2|0-2</td><td>2|1-2</td><td>X|1-1</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Villarreal-Copenhagen</td><td>1|3-0</td><td>1|2-0</td><td>1|2-0</td><td>1|3-1</td><td>1|3-1</td><td>1|2-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>1|3-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Athletic Bilbao-PSG</td><td>2|0-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-4</td><td>2|1-3</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>X|2-2</td><td>2|0-3</td><td>2|1-3</td><td>2|0-2</td><td>2|1-3</td><td>2|1-3</td><td>1|2-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Bayer Leverkusen-Newcastle</td><td>X|2-2</td><td>1|1-0</td><td>1|2-0</td><td>X|2-2</td><td>X|2-2</td><td>1|1-0</td><td>X|2-2</td><td>1|3-1</td><td>X|2-2</td><td>1|3-0</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Borussia Dortmund-Bodø/Glimt</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-1</td><td>1|3-0</td><td>1|3-0</td><td>1|2-0</td><td>1|3-0</td><td>1|3-0</td><td>1|2-1</td><td>1|3-1</td><td>1|2-0</td><td>1|2-1</td><td>1|2-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Brugge-Arsenal</td><td>2|1-3</td><td>X|2-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|1-3</td><td>2|0-2</td><td>2|0-3</td><td>2|1-2</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-2</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Juventus-Pafos</td><td>1|5-0</td><td>1|2-0</td><td>1|3-0</td><td>1|2-0</td><td>1|3-1</td><td>1|3-0</td><td>1|4-0</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|2-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Real Madrid-Manchester City</td><td>X|2-2</td><td>2|1-3</td><td>2|1-3</td><td>2|1-2</td><td>X|2-2</td><td>2|1-2</td><td>1|3-2</td><td>1|3-2</td><td>2|1-2</td><td>1|3-1</td><td>1|3-2</td><td>X|2-2</td><td>X|2-2</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td></tr><tr class="match-row" data-date="2025-12-10"><td class="match-date">2025-12-10</td><td class="match-teams">Benfica-Napoli</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-0</td><td>1|1-0</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>2|1-2</td><td>X|1-1</td><td>1|2-1</td><td>2|1-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Kairat Almaty -Brugge</td><td>X|1-1</td><td>X|1-1</td><td>2|0-2</td><td>X|1-1</td><td>X|0-0</td><td>2|1-2</td><td>2|2-3</td><td>1|2-1</td><td>2|0-2</td><td>2|0-2</td><td>X|1-1</td><td>2|0-3</td><td>2|1-2</td><td>X|1-1</td><td>2|0-2</td><td>2|0-2</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Bodø/Glimt-Manchester City</td><td>2|0-4</td><td>2|0-3</td><td>2|0-5</td><td>2|0-5</td><td>2|0-2</td><td>2|0-3</td><td>2|0-5</td><td>2|2-4</td><td>2|0-3</td><td>2|0-3</td><td>2|1-3</td><td>2|1-4</td><td>2|0-3</td><td>2|1-3</td><td>2|0-6</td><td>2|0-4</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Copenhagen-Napoli</td><td>X|1-1</td><td>X|1-1</td><td>2|0-3</td><td>2|1-3</td><td>2|1-2</td><td>2|0-2</td><td>1|2-1</td><td>X|2-2</td><td>2|1-3</td><td>2|0-3</td><td>1|2-1</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Inter Milan-Arsenal</td><td>X|2-2</td><td>X|1-1</td><td>X|1-1</td><td>2|2-4</td><td>X|3-3</td><td>2|1-2</td><td>1|2-1</td><td>2|1-3</td><td>X|3-3</td><td>1|2-0</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|3-2</td><td>X|2-2</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Olympiakos-Bayer Leverkusen</td><td>2|0-2</td><td>X|1-1</td><td>1|1-0</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>2|2-4</td><td>X|1-1</td><td>2|0-3</td><td>2|0-1</td><td>2|0-2</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Real Madrid-Monaco</td><td>1|3-1</td><td>1|1-0</td><td>1|3-1</td><td>1|3-0</td><td>1|3-2</td><td>1|3-0</td><td>1|3-0</td><td>1|3-1</td><td>1|3-0</td><td>1|4-0</td><td>1|3-1</td><td>1|3-1</td><td>1|2-1</td><td>1|3-1</td><td>X|2-2</td><td>1|3-1</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Sporting Portugal-PSG</td><td>2|2-3</td><td>2|1-3</td><td>2|0-4</td><td>2|1-3</td><td>X|1-1</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|2-4</td><td>2|0-3</td><td>2|0-2</td><td>2|1-2</td><td>2|1-2</td><td>1|2-1</td><td>2|1-3</td><td>2|2-3</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Tottenham-Borussia Dortmund</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>X|2-2</td><td>2|1-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-0</td><td>X|2-2</td></tr><tr class="match-row" data-date="2026-01-20"><td class="match-date">2026-01-20</td><td class="match-teams">Villarreal-Ajax</td><td>2|1-2</td><td>X|1-1</td><td>1|1-0</td><td>1|1-0</td><td>1|2-1</td><td>1|3-2</td><td>1|3-0</td><td>X|1-1</td><td>1|2-0</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Galatasaray-Atlético Madrid</td><td>1|3-0</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>X|1-1</td><td>2|0-1</td><td>2|1-2</td><td>1|2-1</td><td>2|0-3</td><td>2|0-3</td><td>1|2-1</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td><td>2|0-1</td><td>2|1-2</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Qarabağ-Eintracht Frankfurt</td><td>2|0-2</td><td>2|0-1</td><td>2|1-2</td><td>1|1-0</td><td>2|1-4</td><td>2|0-1</td><td>2|0-3</td><td>1|2-1</td><td>2|0-2</td><td>2|0-3</td><td>2|0-2</td><td>2|0-2</td><td>2|0-1</td><td>2|1-2</td><td>X|1-1</td><td>2|0-1</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Atalanta-Athletic Bilbao</td><td>X|0-0</td><td>X|1-1</td><td>2|1-2</td><td>X|3-3</td><td>1|1-0</td><td>1|1-0</td><td>1|2-1</td><td>2|0-1</td><td>1|2-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td><td>1|2-1</td><td>2|1-2</td><td>2|1-2</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Chelsea-Pafos</td><td>1|5-0</td><td>1|3-0</td><td>1|4-0</td><td>1|6-0</td><td>1|3-0</td><td>1|4-0</td><td>1|5-0</td><td>1|3-1</td><td>1|2-0</td><td>1|3-0</td><td>1|3-0</td><td>1|3-0</td><td>1|3-0</td><td>1|3-0</td><td>1|3-0</td><td>1|4-0</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Bayern München-Union Saint-Gilloise</td><td>1|6-0</td><td>1|3-0</td><td>1|5-1</td><td>1|7-1</td><td>1|5-1</td><td>1|3-1</td><td>1|4-0</td><td>1|2-0</td><td>1|3-0</td><td>1|4-0</td><td>1|4-0</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>1|5-0</td><td>1|4-0</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Juventus-Benfica</td><td>X|1-1</td><td>X|2-2</td><td>1|3-0</td><td>1|2-1</td><td>1|3-2</td><td>X|2-2</td><td>1|3-2</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>2|1-2</td><td>1|2-1</td><td>2|1-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Newcastle-PSV Eindhoven</td><td>1|1-0</td><td>X|3-3</td><td>1|1-0</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Marseille-Liverpool</td><td>X|2-2</td><td>2|1-2</td><td>2|0-2</td><td>2|2-3</td><td>X|2-2</td><td>2|1-2</td><td>2|1-2</td><td>2|2-3</td><td>X|2-2</td><td>2|0-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>2|2-4</td></tr><tr class="match-row" data-date="2026-01-21"><td class="match-date">2026-01-21</td><td class="match-teams">Slavia Praha-Barcelona</td><td>2|1-3</td><td>2|1-3</td><td>2|1-4</td><td>2|0-3</td><td>2|1-3</td><td>2|0-4</td><td>2|0-3</td><td>2|1-3</td><td>2|0-3</td><td>2|0-3</td><td>2|1-3</td><td>2|0-3</td><td>2|0-2</td><td>2|1-2</td><td>2|0-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Ajax-Olympiakos</td><td>1|2-0</td><td>1|1-0</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>1|1-0</td><td>1|2-0</td><td>2|0-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-1</td><td>1|2-1</td><td>1|2-1</td><td>2|1-2</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Arsenal-Kairat Almaty </td><td>1|4-0</td><td>1|2-0</td><td>1|4-1</td><td>1|5-1</td><td>1|3-0</td><td>1|4-0</td><td>1|4-0</td><td>1|2-1</td><td>1|3-0</td><td>1|4-0</td><td>1|3-1</td><td>1|4-0</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Monaco-Juventus</td><td>2|1-2</td><td>1|2-1</td><td>2|0-2</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>X|2-2</td><td>2|0-2</td><td>X|2-2</td><td>2|0-2</td><td>1|2-1</td><td>X|1-1</td><td>2|1-2</td><td>2|1-2</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Athletic Bilbao-Sporting Portugal</td><td>1|2-0</td><td>1|2-1</td><td>1|1-0</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>X|1-1</td><td>1|2-1</td><td>2|0-2</td><td>1|2-0</td><td>2|1-2</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|2-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Atlético Madrid-Bodø/Glimt</td><td>1|3-0</td><td>1|3-0</td><td>1|4-1</td><td>1|4-1</td><td>1|2-1</td><td>1|4-0</td><td>1|3-0</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-1</td><td>1|5-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Bayer Leverkusen-Villarreal</td><td>1|4-1</td><td>X|2-2</td><td>2|1-3</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td><td>2|2-3</td><td>2|1-3</td><td>1|3-0</td><td>2|1-2</td><td>X|2-2</td><td>X|1-1</td><td>1|2-1</td><td>X|1-1</td><td>X|1-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Borussia Dortmund-Inter Milan</td><td>X|2-2</td><td>X|2-2</td><td>X|1-1</td><td>X|2-2</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>2|2-4</td><td>X|2-2</td><td>2|0-2</td><td>2|1-2</td><td>1|2-1</td><td>X|2-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-2</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Brugge-Marseille</td><td>X|1-1</td><td>X|2-2</td><td>X|0-0</td><td>1|2-1</td><td>2|1-4</td><td>2|1-2</td><td>X|2-2</td><td>X|2-2</td><td>X|2-2</td><td>2|0-2</td><td>X|1-1</td><td>2|1-2</td><td>2|0-1</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Eintracht Frankfurt-Tottenham</td><td>1|2-1</td><td>X|2-2</td><td>2|1-3</td><td>X|1-1</td><td>X|1-1</td><td>2|1-2</td><td>1|3-1</td><td>2|1-3</td><td>2|0-2</td><td>2|0-2</td><td>2|1-2</td><td>X|1-1</td><td>2|1-3</td><td>1|2-1</td><td>2|0-2</td><td>1|2-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Barcelona-Copenhagen</td><td>1|3-0</td><td>1|3-0</td><td>1|3-0</td><td>1|4-1</td><td>1|5-1</td><td>1|5-0</td><td>1|4-1</td><td>1|2-0</td><td>1|3-0</td><td>1|3-0</td><td>1|4-0</td><td>1|2-0</td><td>1|2-0</td><td>1|2-0</td><td>1|4-0</td><td>1|3-0</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Liverpool-Qarabağ</td><td>1|4-0</td><td>1|3-0</td><td>1|4-0</td><td>1|3-1</td><td>1|5-1</td><td>1|5-0</td><td>1|4-0</td><td>X|1-1</td><td>1|3-0</td><td>1|4-0</td><td>1|3-0</td><td>1|4-0</td><td>1|3-1</td><td>1|2-1</td><td>1|4-0</td><td>1|4-0</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Manchester City-Galatasaray</td><td>1|5-1</td><td>1|3-0</td><td>1|4-1</td><td>1|4-1</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|3-1</td><td>1|2-0</td><td>1|4-0</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|3-1</td><td>1|2-0</td><td>1|3-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Pafos-Slavia Praha</td><td>X|3-3</td><td>X|1-1</td><td>2|1-2</td><td>X|2-2</td><td>X|2-2</td><td>2|0-1</td><td>1|1-0</td><td>1|2-1</td><td>2|0-2</td><td>2|0-2</td><td>2|0-1</td><td>2|0-3</td><td>X|1-1</td><td>2|1-2</td><td>X|1-1</td><td>X|2-2</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">PSG-Newcastle</td><td>X|2-2</td><td>1|2-1</td><td>1|3-1</td><td>1|3-0</td><td>1|2-1</td><td>1|2-0</td><td>1|2-0</td><td>1|3-0</td><td>X|2-2</td><td>1|4-0</td><td>1|2-0</td><td>1|3-2</td><td>X|2-2</td><td>1|2-1</td><td>1|2-1</td><td>1|3-1</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">PSV Eindhoven-Bayern München</td><td>2|0-2</td><td>2|1-2</td><td>2|1-4</td><td>2|1-4</td><td>X|1-1</td><td>2|0-3</td><td>2|1-2</td><td>2|2-3</td><td>X|1-1</td><td>2|0-3</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Union Saint-Gilloise-Atalanta</td><td>2|0-2</td><td>X|2-2</td><td>2|0-2</td><td>2|0-1</td><td>X|1-1</td><td>1|2-1</td><td>X|2-2</td><td>1|2-1</td><td>2|0-3</td><td>2|0-3</td><td>2|0-2</td><td>2|1-3</td><td>2|0-2</td><td>2|1-2</td><td>2|0-1</td><td>2|1-2</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Benfica-Real Madrid</td><td>X|2-2</td><td>2|1-2</td><td>2|1-2</td><td>2|1-3</td><td>X|2-2</td><td>X|2-2</td><td>2|0-2</td><td>2|2-3</td><td>2|2-3</td><td>2|0-2</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|1-3</td><td>2|1-2</td><td>2|2-4</td></tr><tr class="match-row" data-date="2026-01-28"><td class="match-date">2026-01-28</td><td class="match-teams">Napoli-Chelsea</td><td>X|1-1</td><td>X|2-2</td><td>2|1-3</td><td>2|0-2</td><td>X|3-3</td><td>1|2-1</td><td>1|2-1</td><td>2|1-4</td><td>2|2-3</td><td>1|2-1</td><td>1|2-1</td><td>X|2-2</td><td>X|2-2</td><td>1|2-1</td><td>X|1-1</td><td>X|2-2</td></tr>
-                </tbody>
-            </table>
+        <div id="matchesContainer">
+            <!-- Los partidos se generarán dinámicamente con JavaScript -->
         </div>
-</div>
     </div>
 
     <script>
-        function filterMatches() {
-            const selectedDate = document.getElementById('dateFilter').value;
-            const matchRows = document.querySelectorAll('.match-row');
+        // Datos de los participantes
+        const participants = ["XAVI", "CHARLY", "POTI", "TONI", "CHETE", "LUIS IRISH", "PEPE", "PILAR", "YERAY", "LUISETE", "SALME", "CLAU", "COPILOT", "GUILLE", "PERICO", "CARLOS"];
+        
+        // Datos completos de TODOS los partidos
+        const matchesData = [
+            {date: "2025-09-16", teams: "Athletic Bilbao-Arsenal", predictions: ["2|1-3", "X|1-1", "2|0-3", "2|1-3", "X|1-1", "2|0-3", "X|2-2", "2|1-2", "2|1-3", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|0-2", "2|1-2"]},
+            {date: "2025-09-16", teams: "PSV Eindhoven-Union Saint-Gilloise", predictions: ["1|4-0", "1|1-0", "1|3-0", "1|2-1", "1|2-1", "1|2-1", "1|3-0", "1|2-0", "1|2-0", "1|2-0", "1|2-0", "1|2-1", "1|2-0", "1|2-1", "1|1-0", "1|2-0"]},
+            {date: "2025-09-16", teams: "Juventus-Borussia Dortmund", predictions: ["X|1-1", "2|1-2", "1|2-1", "X|2-2", "X|0-0", "X|1-1", "2|1-2", "1|3-2", "X|1-1", "1|2-1", "2|1-2", "2|1-2", "X|1-1", "1|2-1", "X|2-2", "X|2-2"]},
+            {date: "2025-09-16", teams: "Real Madrid-Marseille", predictions: ["1|3-1", "1|1-0", "1|4-1", "1|2-0", "1|3-1", "1|2-1", "1|3-1", "1|3-1", "1|2-0", "1|4-0", "1|3-1", "1|3-1", "1|3-1", "1|3-1", "1|2-1", "1|3-0"]},
+            {date: "2025-09-16", teams: "Benfica-Qarabağ", predictions: ["1|5-1", "1|2-0", "1|2-0", "1|1-0", "X|2-2", "1|4-0", "1|3-0", "1|4-1", "1|4-0", "1|3-0", "1|3-0", "1|2-0", "1|2-0", "1|3-0", "1|2-0", "1|2-0"]},
+            {date: "2025-09-16", teams: "Tottenham-Villarreal", predictions: ["1|3-1", "1|3-1", "1|3-1", "2|2-3", "2|1-3", "1|3-1", "1|2-1", "2|2-3", "1|3-1", "1|2-0", "X|2-2", "1|2-1", "X|2-2", "1|2-0", "1|4-1", "X|2-2"]},
+            
+            {date: "2025-09-17", teams: "Olympiakos-Pafos", predictions: ["1|2-0", "X|0-0", "1|3-1", "1|3-1", "X|1-1", "1|3-0", "1|4-0", "X|2-2", "1|2-0", "1|2-0", "1|2-1", "1|3-0", "X|1-1", "1|2-0", "1|3-0", "1|3-1"]},
+            {date: "2025-09-17", teams: "Slavia Praha-Bodø/Glimt", predictions: ["X|2-2", "2|1-2", "1|2-0", "X|1-1", "1|2-1", "X|2-2", "1|3-1", "2|0-2", "X|2-2", "1|2-0", "2|1-2", "X|1-1", "2|0-1", "X|1-1", "1|2-0", "1|1-0"]},
+            {date: "2025-09-17", teams: "Ajax-Inter Milan", predictions: ["X|1-1", "2|1-3", "2|1-3", "2|1-3", "2|1-3", "2|1-2", "X|1-1", "2|2-4", "X|2-2", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-3"]},
+            {date: "2025-09-17", teams: "Bayern München-Chelsea", predictions: ["X|3-3", "1|3-2", "1|2-0", "1|3-2", "X|2-2", "1|2-1", "1|2-0", "2|2-3", "2|1-2", "1|3-0", "1|3-1", "X|2-2", "1|2-1", "1|2-1", "X|2-2", "X|2-2"]},
+            {date: "2025-09-17", teams: "Liverpool-Atlético Madrid", predictions: ["1|4-1", "X|1-1", "X|1-1", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "X|2-2", "1|3-0", "1|2-1", "2|1-2", "X|2-2", "1|2-1", "X|2-2", "1|2-1"]},
+            {date: "2025-09-17", teams: "PSG-Atalanta", predictions: ["1|3-0", "1|4-1", "1|3-1", "1|3-1", "1|2-0", "1|3-0", "1|2-0", "1|3-2", "1|1-0", "1|3-0", "1|3-1", "X|2-2", "X|1-1", "1|2-1", "1|4-0", "1|3-1"]},
+            
+            {date: "2025-09-18", teams: "Brugge-Monaco", predictions: ["2|0-2", "X|2-2", "2|0-2", "2|0-2", "X|1-1", "X|0-0", "X|1-1", "2|1-2", "2|1-2", "2|0-2", "2|1-2", "2|1-3", "2|1-2", "X|1-1", "1|1-0", "X|2-2"]},
+            {date: "2025-09-18", teams: "Copenhagen-Bayer Leverkusen", predictions: ["2|0-1", "2|1-2", "2|1-2", "X|1-1", "2|1-3", "2|1-3", "2|1-3", "1|3-1", "1|1-0", "2|0-3", "2|1-2", "2|0-2", "2|0-2", "2|1-2", "2|0-3", "2|0-1"]},
+            {date: "2025-09-18", teams: "Eintracht Frankfurt-Galatasaray", predictions: ["X|2-2", "X|2-2", "2|1-2", "1|2-1", "X|2-2", "1|2-0", "1|2-0", "2|0-1", "X|2-2", "1|2-0", "1|2-1", "X|2-2", "1|2-1", "1|2-1", "X|1-1", "X|1-1"]},
+            {date: "2025-09-18", teams: "Manchester City-Napoli", predictions: ["1|3-2", "1|3-1", "1|3-0", "1|3-0", "1|2-1", "X|2-2", "1|3-1", "1|2-0", "X|2-2", "1|3-0", "1|3-1", "X|2-2", "1|3-1", "1|3-1", "2|1-2", "1|3-2"]},
+            {date: "2025-09-18", teams: "Newcastle-Barcelona", predictions: ["2|1-2", "2|1-4", "2|1-3", "2|1-3", "2|1-3", "2|1-4", "2|1-2", "2|1-3", "1|2-1", "2|0-3", "1|2-1", "2|1-3", "2|1-2", "2|1-2", "X|1-1", "X|2-2"]},
+            {date: "2025-09-18", teams: "Sporting Portugal-Kairat Almaty", predictions: ["1|3-0", "1|2-0", "1|1-0", "1|2-0", "1|2-0", "1|4-0", "1|3-0", "X|2-2", "1|2-0", "1|4-0", "1|3-1", "1|2-1", "1|2-0", "1|2-0", "1|3-0", "1|3-0"]},
+            
+            {date: "2025-09-30", teams: "Atalanta-Brugge", predictions: ["2|0-2", "1|1-0", "1|2-1", "X|1-1", "X|0-0", "1|2-1", "1|2-0", "2|0-1", "1|2-1", "1|3-0", "1|2-1", "1|2-0", "1|2-1", "X|1-1", "1|1-0", "1|2-1"]},
+            {date: "2025-09-30", teams: "Kairat Almaty-Real Madrid", predictions: ["2|1-3", "2|1-4", "2|0-5", "2|0-4", "2|1-5", "2|0-4", "2|0-4", "2|0-3", "2|0-3", "2|0-3", "2|1-2", "2|0-3", "2|0-3", "2|0-2", "2|0-2", "2|0-4"]},
+            {date: "2025-09-30", teams: "Atlético Madrid-Eintracht Frankfurt", predictions: ["X|2-2", "1|3-1", "1|3-1", "1|3-0", "1|3-0", "1|2-1", "X|1-1", "1|2-1", "1|2-1", "1|2-0", "1|2-1", "1|2-1", "X|1-1", "X|1-1", "1|3-0", "1|3-1"]},
+            {date: "2025-09-30", teams: "Chelsea-Benfica", predictions: ["1|3-1", "1|3-1", "1|4-1", "1|2-1", "1|2-1", "1|2-0", "1|2-1", "1|3-2", "1|2-0", "1|2-1", "1|2-1", "X|1-1", "X|2-2", "1|2-1", "1|2-1", "1|2-1"]},
+            {date: "2025-09-30", teams: "Inter Milan-Slavia Praha", predictions: ["1|4-0", "1|2-0", "1|3-2", "1|2-0", "1|2-1", "1|3-1", "1|2-0", "1|1-0", "1|3-1", "1|3-0", "1|2-1", "1|3-1", "1|1-0", "1|2-0", "1|2-0", "1|2-1"]},
+            {date: "2025-09-30", teams: "Bodø/Glimt-Tottenham", predictions: ["2|1-3", "2|0-1", "2|1-2", "2|1-2", "X|1-1", "2|0-4", "2|0-1", "X|2-2", "2|0-1", "2|0-3", "2|1-3", "2|0-2", "2|0-2", "2|1-2", "2|0-2", "2|0-2"]},
+            {date: "2025-09-30", teams: "Galatasaray-Liverpool", predictions: ["2|2-4", "2|1-2", "X|1-1", "2|1-4", "2|1-4", "2|1-3", "2|1-3", "2|2-3", "X|2-2", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-3", "2|1-3"]},
+            {date: "2025-09-30", teams: "Marseille-Ajax", predictions: ["X|1-1", "X|2-2", "X|1-1", "X|2-2", "X|2-2", "1|2-1", "1|1-0", "2|1-2", "2|2-3", "X|1-1", "1|2-1", "2|1-2", "X|2-2", "X|1-1", "X|0-0", "X|2-2"]},
+            {date: "2025-09-30", teams: "Pafos-Bayern München", predictions: ["2|0-5", "2|0-3", "2|0-6", "2|0-8", "2|1-3", "2|0-5", "2|0-5", "2|2-3", "2|1-4", "2|0-3", "2|0-3", "2|0-3", "2|0-4", "2|0-3", "2|0-4", "2|0-5"]},
+            
+            {date: "2025-10-01", teams: "Qarabağ-Copenhagen", predictions: ["X|2-2", "1|2-0", "X|1-1", "X|2-2", "X|1-1", "X|1-1", "1|1-0", "2|2-4", "1|2-1", "2|0-2", "X|1-1", "2|1-2", "X|1-1", "2|1-2", "X|2-2", "2|1-2"]},
+            {date: "2025-10-01", teams: "Union Saint-Gilloise-Newcastle", predictions: ["2|0-3", "2|0-2", "2|0-2", "2|1-2", "2|1-2", "2|1-2", "X|1-1", "2|1-3", "2|1-3", "2|0-2", "2|0-1", "2|1-2", "2|1-2", "1|2-1", "1|1-0", "2|1-2"]},
+            {date: "2025-10-01", teams: "Arsenal-Olympiakos", predictions: ["1|4-1", "1|2-1", "1|3-0", "1|3-0", "1|3-1", "1|3-0", "1|2-1", "1|4-3", "1|2-1", "1|3-0", "1|3-1", "1|2-0", "1|3-0", "1|2-0", "1|2-0", "1|3-1"]},
+            {date: "2025-10-01", teams: "Monaco-Manchester City", predictions: ["2|1-4", "2|1-3", "2|1-4", "2|1-2", "2|1-2", "2|0-1", "2|1-2", "2|2-3", "2|1-3", "2|0-3", "X|2-2", "2|1-3", "2|1-2", "2|1-3", "2|0-2", "2|1-3"]},
+            {date: "2025-10-01", teams: "Bayer Leverkusen-PSV Eindhoven", predictions: ["X|2-2", "1|2-1", "X|0-0", "X|1-1", "1|1-0", "1|2-1", "X|1-1", "2|1-3", "X|2-2", "1|3-0", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|1-0", "X|1-1"]},
+            {date: "2025-10-01", teams: "Borussia Dortmund-Athletic Bilbao", predictions: ["1|3-1", "1|3-1", "1|3-1", "1|1-0", "X|2-2", "1|2-1", "2|1-2", "1|2-1", "1|2-0", "1|3-0", "1|2-1", "1|2-0", "1|2-1", "X|1-1", "1|1-0", "2|1-2"]},
+            {date: "2025-10-01", teams: "Barcelona-PSG", predictions: ["X|1-1", "1|2-1", "X|1-1", "1|2-1", "1|1-0", "X|2-2", "X|1-1", "1|2-1", "1|3-2", "1|2-1", "2|2-3", "X|2-2", "X|2-2", "1|2-1", "2|1-2", "X|3-3"]},
+            {date: "2025-10-01", teams: "Napoli-Sporting Portugal", predictions: ["1|4-1", "X|1-1", "1|2-0", "1|2-0", "1|2-1", "1|3-2", "1|1-0", "2|2-3", "1|2-0", "1|2-0", "X|2-2", "1|2-1", "X|1-1", "2|1-2", "1|1-0", "1|2-1"]},
+            {date: "2025-10-01", teams: "Villarreal-Juventus", predictions: ["X|2-2", "2|1-3", "2|1-2", "X|1-1", "X|1-1", "X|1-1", "1|2-1", "2|0-1", "1|2-1", "2|0-2", "1|2-1", "2|1-2", "X|1-1", "2|1-2", "1|1-0", "1|3-2"]},
+            
+            {date: "2025-10-21", teams: "Barcelona-Olympiakos", predictions: ["1|3-0", "1|3-0", "1|3-1", "1|4-0", "1|4-1", "1|4-1", "1|2-0", "X|2-2", "1|3-0", "1|3-0", "1|4-0", "1|3-0", "1|2-0", "1|2-1", "1|5-0", "1|2-1"]},
+            {date: "2025-10-21", teams: "Kairat Almaty-Pafos", predictions: ["X|1-1", "2|2-3", "2|0-2", "2|1-2", "X|0-0", "X|2-2", "1|2-1", "1|3-2", "X|0-0", "X|1-1", "X|1-1", "2|0-2", "X|1-1", "X|1-1", "X|1-1", "X|2-2"]},
+            {date: "2025-10-21", teams: "Arsenal-Atlético Madrid", predictions: ["1|3-1", "X|1-1", "1|2-0", "1|3-1", "X|2-2", "1|2-1", "1|2-1", "2|1-2", "2|2-3", "1|2-1", "1|3-1", "2|1-2", "X|2-2", "2|1-2", "2|0-1", "X|2-2"]},
+            {date: "2025-10-21", teams: "Bayer Leverkusen-PSG", predictions: ["2|1-3", "2|1-2", "X|1-1", "2|1-4", "2|1-3", "2|1-2", "2|1-2", "1|3-1", "X|1-1", "1|2-1", "2|1-3", "2|1-2", "2|1-3", "1|2-1", "2|0-1", "2|1-2"]},
+            {date: "2025-10-21", teams: "Copenhagen-Borussia Dortmund", predictions: ["2|0-2", "2|2-3", "2|0-3", "2|1-3", "2|1-2", "X|1-1", "2|0-1", "2|0-1", "2|1-3", "2|0-3", "2|1-2", "2|1-2", "2|0-2", "2|1-2", "X|1-1", "2|1-3"]},
+            {date: "2025-10-21", teams: "Newcastle-Benfica", predictions: ["1|2-0", "X|2-2", "1|1-0", "X|2-2", "1|2-1", "1|2-1", "2|1-3", "2|1-2", "1|2-0", "2|0-2", "2|1-2", "1|2-1", "X|1-1", "1|2-1", "X|1-1", "X|2-2"]},
+            {date: "2025-10-21", teams: "PSV Eindhoven-Napoli", predictions: ["2|2-3", "2|2-3", "2|1-2", "2|0-2", "X|1-1", "2|1-2", "X|1-1", "1|2-1", "2|1-3", "2|0-2", "2|1-2", "X|2-2", "1|2-1", "1|2-1", "2|0-1", "2|1-3"]},
+            {date: "2025-10-21", teams: "Union Saint-Gilloise-Inter Milan", predictions: ["2|0-4", "2|0-1", "2|0-4", "2|0-2", "2|1-3", "2|1-3", "2|0-3", "2|1-2", "2|1-2", "2|0-3", "2|0-2", "2|0-2", "2|0-2", "2|1-2", "2|1-3", "2|1-3"]},
+            {date: "2025-10-21", teams: "Villarreal-Manchester City", predictions: ["2|1-3", "2|1-3", "2|1-3", "2|1-3", "X|2-2", "2|2-3", "2|1-3", "2|1-3", "2|0-2", "2|0-3", "2|1-3", "X|1-1", "2|1-2", "2|1-3", "2|0-3", "2|2-4"]},
+            
+            {date: "2025-10-22", teams: "Athletic Bilbao-Qarabağ", predictions: ["1|3-0", "1|2-0", "1|3-0", "1|2-0", "1|3-0", "1|2-0", "1|3-0", "1|2-0", "1|2-0", "1|2-0", "1|3-0", "1|2-0", "1|2-0", "1|2-0", "1|2-0", "1|3-1"]},
+            {date: "2025-10-22", teams: "Galatasaray-Bodø/Glimt", predictions: ["1|4-1", "1|1-0", "1|2-0", "1|1-0", "1|2-1", "1|3-0", "1|3-0", "X|1-1", "X|1-1", "1|2-0", "2|1-2", "X|2-2", "X|1-1", "1|2-1", "1|2-0", "1|2-0"]},
+            {date: "2025-10-22", teams: "Monaco-Tottenham", predictions: ["X|2-2", "X|2-2", "X|1-1", "X|2-2", "X|1-1", "X|1-1", "X|1-1", "X|2-2", "X|1-1", "2|0-2", "2|1-2", "2|1-2", "X|2-2", "2|1-2", "X|1-1", "X|2-2"]},
+            {date: "2025-10-22", teams: "Atalanta-Slavia Praha", predictions: ["X|1-1", "X|1-1", "1|2-0", "1|2-1", "2|2-3", "1|2-0", "1|2-0", "2|1-3", "1|2-1", "1|3-0", "1|2-1", "1|2-0", "1|1-0", "1|2-0", "1|1-0", "1|3-0"]},
+            {date: "2025-10-22", teams: "Chelsea-Ajax", predictions: ["1|4-2", "1|2-1", "1|3-0", "1|4-1", "1|3-1", "1|3-1", "1|3-1", "1|3-2", "1|3-1", "1|2-0", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|2-0"]},
+            {date: "2025-10-22", teams: "Eintracht Frankfurt-Liverpool", predictions: ["2|1-3", "2|2-3", "2|1-3", "2|1-3", "2|2-3", "2|1-2", "2|1-3", "2|1-2", "2|2-4", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-4"]},
+            {date: "2025-10-22", teams: "Bayern München-Brugge", predictions: ["1|4-0", "1|3-0", "1|4-1", "1|4-0", "1|4-1", "1|4-1", "1|3-1", "1|3-0", "1|4-0", "1|4-0", "1|2-1", "1|3-0", "1|3-0", "1|3-1", "1|2-0", "1|4-0"]},
+            {date: "2025-10-22", teams: "Real Madrid-Juventus", predictions: ["1|3-2", "1|3-2", "X|1-1", "1|3-1", "X|1-1", "1|2-1", "1|3-1", "1|2-1", "1|2-1", "1|3-0", "1|3-1", "1|2-1", "1|2-1", "1|2-1", "1|1-0", "1|2-0"]},
+            {date: "2025-10-22", teams: "Sporting Portugal-Marseille", predictions: ["X|1-1", "1|2-1", "X|0-0", "X|2-2", "2|1-2", "X|2-2", "1|2-0", "X|2-2", "1|2-1", "X|1-1", "2|1-2", "1|2-0", "X|1-1", "1|2-0", "1|2-1", "X|2-2"]},
+            
+            {date: "2025-11-04", teams: "Slavia Praha-Arsenal", predictions: ["X|1-1", "2|1-2", "2|1-4", "2|1-4", "2|1-3", "2|0-2", "2|1-3", "2|1-3", "2|0-2", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "X|1-1", "2|1-3"]},
+            {date: "2025-11-04", teams: "Napoli-Eintracht Frankfurt", predictions: ["1|1-0", "X|2-2", "1|2-1", "X|1-1", "X|2-2", "1|2-0", "1|2-1", "1|2-1", "1|2-0", "1|2-0", "X|2-2", "1|2-1", "1|2-1", "1|2-1", "X|1-1", "1|2-0"]},
+            {date: "2025-11-04", teams: "Atlético Madrid-Union Saint-Gilloise", predictions: ["1|4-0", "1|3-0", "1|4-1", "1|4-1", "1|4-1", "1|3-1", "1|3-0", "1|2-1", "1|1-0", "1|3-0", "1|3-0", "1|3-1", "1|2-0", "1|2-1", "1|3-0", "1|3-0"]},
+            {date: "2025-11-04", teams: "Bodø/Glimt-Monaco", predictions: ["X|1-1", "2|1-3", "2|1-3", "X|3-3", "2|1-2", "2|0-1", "2|1-3", "2|0-1", "2|1-2", "2|0-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|0-1", "2|1-3"]},
+            {date: "2025-11-04", teams: "Juventus-Sporting Portugal", predictions: ["1|3-1", "1|3-1", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|2-1", "1|3-2", "1|2-0", "1|2-0", "1|2-1", "1|2-0", "1|2-1", "1|2-1", "1|1-0", "1|2-0"]},
+            {date: "2025-11-04", teams: "Liverpool-Real Madrid", predictions: ["X|1-1", "1|2-1", "1|2-0", "1|3-1", "1|3-2", "1|2-1", "1|2-1", "2|2-3", "1|3-2", "1|3-1", "1|2-1", "X|2-2", "X|1-1", "1|2-1", "X|2-2", "2|2-3"]},
+            {date: "2025-11-04", teams: "Olympiakos-PSV Eindhoven", predictions: ["1|3-1", "X|1-1", "1|1-0", "X|1-1", "X|1-1", "X|1-1", "2|1-3", "2|1-2", "2|1-2", "2|0-2", "2|1-2", "X|1-1", "2|0-2", "2|1-2", "1|1-0", "1|2-1"]},
+            {date: "2025-11-04", teams: "PSG-Bayern München", predictions: ["X|1-1", "X|2-2", "1|1-0", "1|3-2", "X|2-2", "X|2-2", "1|2-1", "X|2-2", "X|0-0", "1|3-1", "1|3-1", "X|2-2", "X|2-2", "1|2-1", "X|2-2", "2|2-3"]},
+            {date: "2025-11-04", teams: "Tottenham-Copenhagen", predictions: ["1|3-0", "1|2-0", "1|3-1", "1|2-0", "1|2-1", "1|2-0", "X|1-1", "1|2-1", "1|2-0", "1|3-0", "1|2-1", "1|3-0", "1|3-0", "1|2-1", "1|2-0", "1|3-1"]},
+            
+            {date: "2025-11-05", teams: "Pafos-Villarreal", predictions: ["2|1-2", "2|0-2", "2|0-2", "2|1-3", "2|1-3", "2|0-3", "2|1-3", "2|2-3", "2|1-2", "2|0-3", "2|1-2", "2|0-2", "2|0-1", "2|0-2", "2|0-1", "2|0-4"]},
+            {date: "2025-11-05", teams: "Qarabağ-Chelsea", predictions: ["2|1-5", "2|1-3", "2|1-4", "2|1-3", "2|1-4", "2|0-4", "2|0-4", "2|1-4", "X|1-1", "2|0-3", "2|1-3", "2|0-2", "2|1-3", "2|1-2", "2|0-1", "2|1-4"]},
+            {date: "2025-11-05", teams: "Ajax-Galatasaray", predictions: ["1|2-1", "1|1-0", "1|2-1", "1|3-1", "X|2-2", "1|2-0", "1|2-1", "1|3-2", "1|2-0", "1|2-0", "1|2-1", "2|1-2", "1|2-1", "2|1-2", "X|1-1", "2|1-2"]},
+            {date: "2025-11-05", teams: "Brugge-Barcelona", predictions: ["2|0-4", "2|1-3", "2|0-2", "2|0-2", "2|2-3", "2|0-4", "2|1-2", "2|1-3", "2|2-3", "2|0-3", "2|1-3", "2|1-3", "2|1-2", "2|1-3", "2|0-3", "2|1-4"]},
+            {date: "2025-11-05", teams: "Inter Milan-Kairat Almaty", predictions: ["1|5-1", "1|2-0", "1|2-0", "1|3-0", "1|1-0", "1|3-0", "1|4-0", "1|2-0", "1|2-0", "1|4-0", "1|3-0", "1|3-0", "1|2-0", "1|2-1", "1|3-0", "1|3-0"]},
+            {date: "2025-11-05", teams: "Manchester City-Borussia Dortmund", predictions: ["1|3-1", "1|2-1", "1|2-1", "1|3-0", "X|2-2", "1|3-2", "1|3-1", "1|3-2", "1|3-0", "1|3-0", "1|2-1", "1|2-1", "1|2-1", "1|3-1", "1|2-1", "1|3-1"]},
+            {date: "2025-11-05", teams: "Newcastle-Athletic Bilbao", predictions: ["X|1-1", "X|1-1", "2|1-2", "X|2-2", "X|1-1", "1|2-1", "2|0-1", "1|3-2", "1|3-1", "1|2-0", "1|3-1", "1|2-0", "X|1-1", "1|2-1", "X|2-2", "2|1-3"]},
+            {date: "2025-11-05", teams: "Marseille-Atalanta", predictions: ["1|3-2", "X|2-2", "X|0-0", "1|1-0", "1|2-0", "1|2-0", "1|1-0", "X|2-2", "1|2-0", "2|0-2", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "X|1-1", "X|1-1"]},
+            {date: "2025-11-05", teams: "Benfica-Bayer Leverkusen", predictions: ["X|1-1", "X|2-2", "1|1-0", "1|3-1", "1|3-2", "1|3-2", "1|2-1", "2|1-3", "1|3-1", "2|0-2", "1|2-1", "X|1-1", "X|2-2", "2|1-2", "1|1-0", "X|2-2"]},
+            
+            {date: "2025-11-25", teams: "Ajax-Benfica", predictions: ["X|0-0", "2|1-2", "1|2-1", "X|1-1", "2|1-2", "X|2-2", "X|2-2", "2|2-4", "1|2-1", "2|0-2", "1|2-1", "1|2-1", "X|1-1", "2|1-2", "X|1-1", "1|3-2"]},
+            {date: "2025-11-25", teams: "Galatasaray-Union Saint-Gilloise", predictions: ["1|2-0", "1|2-0", "1|3-0", "1|2-0", "1|2-1", "1|2-1", "1|3-0", "2|0-1", "1|1-0", "X|1-1", "1|2-1", "1|3-1", "1|2-1", "1|2-1", "1|2-0", "1|2-1"]},
+            {date: "2025-11-25", teams: "Borussia Dortmund-Villarreal", predictions: ["1|4-1", "1|2-1", "1|2-0", "2|1-2", "1|2-0", "1|1-0", "2|1-2", "1|2-0", "X|2-2", "1|2-0", "1|2-1", "X|2-2", "X|2-2", "1|2-1", "X|2-2", "X|2-2"]},
+            {date: "2025-11-25", teams: "Chelsea-Barcelona", predictions: ["X|1-1", "2|1-2", "2|1-2", "X|2-2", "X|0-0", "2|2-4", "2|1-2", "X|3-3", "1|2-1", "2|0-2", "2|1-3", "X|1-1", "2|1-3", "1|2-1", "X|1-1", "X|2-2"]},
+            {date: "2025-11-25", teams: "Bodø/Glimt-Juventus", predictions: ["2|0-5", "2|0-2", "2|1-3", "X|1-1", "2|1-3", "2|0-2", "2|0-3", "2|0-1", "2|0-3", "2|0-3", "1|2-1", "2|0-3", "2|0-2", "2|1-2", "2|0-3", "2|0-3"]},
+            {date: "2025-11-25", teams: "Manchester City-Bayer Leverkusen", predictions: ["1|3-0", "1|2-1", "1|3-1", "1|3-0", "1|1-0", "1|2-1", "1|3-0", "X|1-1", "1|2-0", "1|3-1", "1|3-1", "X|2-2", "1|2-1", "1|3-1", "1|2-0", "1|3-1"]},
+            {date: "2025-11-25", teams: "Marseille-Newcastle", predictions: ["2|0-2", "X|3-3", "2|1-2", "X|1-1", "X|1-1", "1|2-1", "1|2-1", "1|2-1", "1|1-0", "X|1-1", "X|1-1", "1|1-0", "X|1-1", "2|1-2", "X|1-1", "X|2-2"]},
+            {date: "2025-11-25", teams: "Slavia Praha-Athletic Bilbao", predictions: ["2|0-1", "2|1-3", "2|0-1", "2|0-2", "2|1-2", "X|1-1", "2|1-3", "1|1-0", "2|2-4", "X|1-1", "2|1-2", "X|1-1", "2|0-1", "1|2-0", "X|1-1", "2|1-3"]},
+            {date: "2025-11-25", teams: "Napoli-Qarabağ", predictions: ["1|3-0", "1|3-1", "1|2-0", "1|2-0", "1|3-0", "1|3-0", "1|4-1", "1|2-1", "1|2-0", "1|3-0", "1|2-1", "1|3-0", "1|3-0", "1|2-1", "1|2-0", "1|3-1"]},
+            
+            {date: "2025-11-26", teams: "Copenhagen-Kairat Almaty", predictions: ["X|0-0", "1|1-0", "1|2-0", "1|1-0", "X|2-2", "1|2-0", "1|4-0", "X|2-2", "1|3-0", "1|3-0", "1|3-1", "1|2-1", "X|1-1", "X|1-1", "1|1-0", "2|1-2"]},
+            {date: "2025-11-26", teams: "Pafos-Monaco", predictions: ["2|0-1", "2|1-3", "2|1-3", "X|1-1", "X|1-1", "2|0-1", "2|0-3", "1|3-1", "2|0-2", "2|0-3", "2|1-2", "2|0-2", "2|0-2", "2|0-2", "2|0-2", "2|0-2"]},
+            {date: "2025-11-26", teams: "Arsenal-Bayern München", predictions: ["X|2-2", "X|2-2", "1|2-1", "X|3-3", "X|3-3", "1|3-2", "2|1-2", "1|2-1", "1|3-1", "2|0-2", "2|2-3", "X|1-1", "X|2-2", "2|1-2", "1|3-2", "X|2-2"]},
+            {date: "2025-11-26", teams: "Atlético Madrid-Inter Milan", predictions: ["X|2-2", "1|2-1", "1|2-1", "1|2-1", "1|1-0", "1|2-1", "1|1-0", "2|2-3", "X|2-2", "2|0-2", "1|2-1", "1|2-1", "X|1-1", "1|2-1", "1|2-1", "1|3-1"]},
+            {date: "2025-11-26", teams: "Eintracht Frankfurt-Atalanta", predictions: ["X|1-1", "1|2-1", "2|1-2", "1|4-2", "X|1-1", "X|1-1", "1|2-0", "2|0-2", "2|1-2", "2|0-2", "1|2-1", "X|2-2", "X|2-2", "2|1-2", "X|1-1", "2|1-2"]},
+            {date: "2025-11-26", teams: "Liverpool-PSV Eindhoven", predictions: ["1|3-0", "1|3-1", "1|2-1", "1|4-2", "1|2-0", "1|2-1", "1|2-0", "1|4-3", "1|3-2", "1|4-0", "1|3-1", "1|2-1", "1|3-1", "1|2-1", "1|3-0", "1|3-0"]},
+            {date: "2025-11-26", teams: "Olympiakos-Real Madrid", predictions: ["X|2-2", "2|1-2", "2|1-2", "2|0-2", "2|1-2", "2|1-2", "2|1-3", "2|2-3", "2|0-3", "2|0-3", "2|1-3", "2|1-3", "2|0-3", "2|1-3", "2|1-2", "2|1-2"]},
+            {date: "2025-11-26", teams: "PSG-Tottenham", predictions: ["1|3-2", "1|3-2", "1|3-0", "1|2-1", "1|3-1", "1|2-0", "1|3-0", "1|2-1", "X|1-1", "1|3-0", "1|3-1", "1|2-1", "X|2-2", "1|2-1", "1|3-1", "1|3-1"]},
+            {date: "2025-11-26", teams: "Sporting Portugal-Brugge", predictions: ["1|4-1", "1|2-1", "1|2-0", "2|0-2", "1|2-0", "1|2-1", "2|1-2", "1|3-0", "1|2-0", "1|2-0", "2|1-2", "1|3-0", "1|1-0", "1|2-0", "1|1-0", "1|3-1"]},
+            
+            {date: "2025-12-09", teams: "Kairat Almaty-Olympiakos", predictions: ["2|0-2", "2|1-3", "2|0-2", "X|1-1", "X|0-0", "2|1-2", "X|1-1", "X|1-1", "1|1-0", "2|0-2", "X|1-1", "2|1-2", "2|1-2", "X|1-1", "1|1-0", "2|0-2"]},
+            {date: "2025-12-09", teams: "Bayern München-Sporting Portugal", predictions: ["1|3-1", "1|4-1", "1|3-0", "1|3-0", "1|3-1", "1|3-0", "1|2-1", "1|2-1", "1|2-0", "1|4-0", "1|3-1", "1|2-0", "1|3-1", "1|3-1", "1|2-1", "1|3-1"]},
+            {date: "2025-12-09", teams: "Monaco-Galatasaray", predictions: ["X|1-1", "X|1-1", "X|1-1", "1|2-1", "X|1-1", "1|2-1", "1|2-0", "X|1-1", "1|1-0", "1|2-0", "1|2-1", "1|2-1", "X|2-2", "1|2-1", "X|1-1", "X|2-2"]},
+            {date: "2025-12-09", teams: "Atalanta-Chelsea", predictions: ["2|1-3", "2|1-2", "X|1-1", "2|1-3", "2|1-3", "2|1-2", "2|1-2", "2|0-3", "2|1-3", "1|2-1", "2|1-2", "X|1-1", "X|1-1", "2|1-2", "X|1-1", "2|1-3"]},
+            {date: "2025-12-09", teams: "Barcelona-Eintracht Frankfurt", predictions: ["1|4-0", "1|3-1", "1|4-0", "1|3-1", "1|5-1", "1|4-1", "1|2-0", "1|2-1", "1|3-1", "1|3-0", "1|3-0", "1|2-1", "1|2-0", "1|2-1", "1|4-0", "1|3-0"]},
+            {date: "2025-12-09", teams: "Inter Milan-Liverpool", predictions: ["X|1-1", "2|1-2", "X|1-1", "2|1-2", "X|2-2", "2|1-2", "2|0-1", "2|2-3", "1|2-0", "1|2-1", "1|2-1", "1|2-0", "2|1-2", "2|1-2", "X|2-2", "X|1-1"]},
+            {date: "2025-12-09", teams: "PSV Eindhoven-Atlético Madrid", predictions: ["1|2-0", "2|1-3", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|0-2", "X|2-2", "2|2-3", "2|0-2", "2|1-2", "2|1-2", "X|2-2", "1|2-1", "2|1-3", "2|0-2"]},
+            {date: "2025-12-09", teams: "Union Saint-Gilloise-Marseille", predictions: ["2|0-2", "2|1-3", "2|1-2", "2|0-1", "2|1-2", "2|1-2", "2|1-2", "1|1-0", "2|0-2", "2|0-2", "2|0-2", "2|1-3", "X|1-1", "2|1-2", "X|1-1", "2|0-2"]},
+            {date: "2025-12-09", teams: "Tottenham-Slavia Praha", predictions: ["1|3-1", "1|2-0", "1|2-0", "1|3-1", "X|1-1", "1|3-0", "1|3-0", "X|2-2", "1|3-1", "1|3-0", "1|3-1", "1|2-0", "1|2-0", "1|2-1", "1|2-1", "1|3-1"]},
+            
+            {date: "2025-12-10", teams: "Qarabağ-Ajax", predictions: ["1|2-1", "X|2-2", "2|0-1", "X|2-2", "X|1-1", "2|0-1", "2|0-3", "X|3-3", "X|2-2", "2|0-3", "2|1-3", "2|0-3", "2|0-2", "2|1-2", "X|1-1", "2|0-2"]},
+            {date: "2025-12-10", teams: "Villarreal-Copenhagen", predictions: ["1|3-0", "1|2-0", "1|2-0", "1|3-1", "1|3-1", "1|2-0", "1|3-0", "1|2-1", "1|2-0", "1|2-0", "1|2-1", "X|1-1", "X|1-1", "1|2-1", "1|3-0", "1|3-0"]},
+            {date: "2025-12-10", teams: "Athletic Bilbao-PSG", predictions: ["2|0-3", "2|1-3", "2|1-3", "2|1-4", "2|1-3", "2|0-2", "2|0-2", "2|1-2", "X|2-2", "2|0-3", "2|1-3", "2|0-2", "2|1-3", "2|1-3", "1|2-1", "X|2-2"]},
+            {date: "2025-12-10", teams: "Bayer Leverkusen-Newcastle", predictions: ["X|2-2", "1|1-0", "1|2-0", "X|2-2", "X|2-2", "1|1-0", "X|2-2", "1|3-1", "X|2-2", "1|3-0", "1|2-1", "X|2-2", "1|2-1", "1|2-1", "X|1-1", "X|2-2"]},
+            {date: "2025-12-10", teams: "Borussia Dortmund-Bodø/Glimt", predictions: ["1|2-0", "1|2-0", "1|2-1", "1|3-0", "1|3-1", "1|3-0", "1|3-0", "1|2-0", "1|3-0", "1|3-0", "1|2-1", "1|3-1", "1|2-0", "1|2-1", "1|2-0", "1|3-0"]},
+            {date: "2025-12-10", teams: "Brugge-Arsenal", predictions: ["2|1-3", "X|2-2", "2|0-3", "2|1-2", "2|1-3", "2|1-3", "2|1-3", "2|1-3", "2|0-2", "2|0-3", "2|1-2", "2|0-2", "2|1-2", "2|1-2", "2|1-2", "2|0-2"]},
+            {date: "2025-12-10", teams: "Juventus-Pafos", predictions: ["1|5-0", "1|2-0", "1|3-0", "1|2-0", "1|3-1", "1|3-0", "1|4-0", "1|2-1", "1|3-1", "1|3-0", "1|2-1", "1|3-0", "1|2-1", "1|3-0", "1|2-0", "1|3-0"]},
+            {date: "2025-12-10", teams: "Real Madrid-Manchester City", predictions: ["X|2-2", "2|1-3", "2|1-3", "2|1-2", "X|2-2", "2|1-2", "1|3-2", "1|3-2", "2|1-2", "1|3-1", "1|3-2", "X|2-2", "X|2-2", "X|2-2", "X|2-2", "1|2-1"]},
+            {date: "2025-12-10", teams: "Benfica-Napoli", predictions: ["X|2-2", "X|2-2", "1|2-1", "1|2-1", "X|2-2", "X|2-2", "1|2-0", "1|1-0", "X|1-1", "1|2-1", "1|2-1", "2|1-2", "X|1-1", "1|2-1", "2|1-2", "X|2-2"]},
+            
+            {date: "2026-01-20", teams: "Kairat Almaty-Brugge", predictions: ["X|1-1", "X|1-1", "2|0-2", "X|1-1", "X|0-0", "2|1-2", "2|2-3", "1|2-1", "2|0-2", "2|0-2", "X|1-1", "2|0-3", "2|1-2", "X|1-1", "2|0-2", "2|0-2"]},
+            {date: "2026-01-20", teams: "Bodø/Glimt-Manchester City", predictions: ["2|0-4", "2|0-3", "2|0-5", "2|0-5", "2|0-2", "2|0-3", "2|0-5", "2|2-4", "2|0-3", "2|0-3", "2|1-3", "2|1-4", "2|0-3", "2|1-3", "2|0-6", "2|0-4"]},
+            {date: "2026-01-20", teams: "Copenhagen-Napoli", predictions: ["X|1-1", "X|1-1", "2|0-3", "2|1-3", "2|1-2", "2|0-2", "1|2-1", "X|2-2", "2|1-3", "2|0-3", "1|2-1", "2|1-2", "2|1-2", "2|1-2", "2|1-2", "2|1-3"]},
+            {date: "2026-01-20", teams: "Inter Milan-Arsenal", predictions: ["X|2-2", "X|1-1", "X|1-1", "2|2-4", "X|3-3", "2|1-2", "1|2-1", "2|1-3", "X|3-3", "1|2-0", "X|2-2", "1|2-1", "X|2-2", "1|2-1", "1|3-2", "X|2-2"]},
+            {date: "2026-01-20", teams: "Olympiakos-Bayer Leverkusen", predictions: ["2|0-2", "X|1-1", "1|1-0", "X|1-1", "1|2-1", "1|2-1", "1|2-0", "2|2-4", "X|1-1", "2|0-3", "2|0-1", "2|0-2", "X|1-1", "2|1-2", "X|1-1", "X|1-1"]},
+            {date: "2026-01-20", teams: "Real Madrid-Monaco", predictions: ["1|3-1", "1|1-0", "1|3-1", "1|3-0", "1|3-2", "1|3-0", "1|3-0", "1|3-1", "1|3-0", "1|4-0", "1|3-1", "1|3-1", "1|2-1", "1|3-1", "X|2-2", "1|3-1"]},
+            {date: "2026-01-20", teams: "Sporting Portugal-PSG", predictions: ["2|2-3", "2|1-3", "2|0-4", "2|1-3", "X|1-1", "2|1-2", "2|1-3", "2|1-2", "2|2-4", "2|0-3", "2|0-2", "2|1-2", "2|1-2", "1|2-1", "2|1-3", "2|2-3"]},
+            {date: "2026-01-20", teams: "Tottenham-Borussia Dortmund", predictions: ["1|2-1", "X|2-2", "1|2-1", "X|2-2", "2|1-2", "1|2-1", "1|2-1", "1|2-1", "X|2-2", "1|2-1", "1|2-1", "X|2-2", "1|2-1", "1|2-1", "1|2-0", "X|2-2"]},
+            {date: "2026-01-20", teams: "Villarreal-Ajax", predictions: ["2|1-2", "X|1-1", "1|1-0", "1|1-0", "1|2-1", "1|3-2", "1|3-0", "X|1-1", "1|2-0", "X|1-1", "1|2-1", "X|1-1", "X|1-1", "1|2-1", "1|2-1", "1|2-1"]},
+            
+            {date: "2026-01-21", teams: "Galatasaray-Atlético Madrid", predictions: ["1|3-0", "2|1-3", "2|1-2", "2|1-3", "X|1-1", "2|0-1", "2|1-2", "1|2-1", "2|0-3", "2|0-3", "1|2-1", "2|1-2", "2|1-2", "2|1-2", "2|0-1", "2|1-2"]},
+            {date: "2026-01-21", teams: "Qarabağ-Eintracht Frankfurt", predictions: ["2|0-2", "2|0-1", "2|1-2", "1|1-0", "2|1-4", "2|0-1", "2|0-3", "1|2-1", "2|0-2", "2|0-3", "2|0-2", "2|0-2", "2|0-1", "2|1-2", "X|1-1", "2|0-1"]},
+            {date: "2026-01-21", teams: "Atalanta-Athletic Bilbao", predictions: ["X|0-0", "X|1-1", "2|1-2", "X|3-3", "1|1-0", "1|1-0", "1|2-1", "2|0-1", "1|2-1", "1|3-0", "1|2-1", "1|2-0", "1|2-0", "1|2-1", "2|1-2", "2|1-2"]},
+            {date: "2026-01-21", teams: "Chelsea-Pafos", predictions: ["1|5-0", "1|3-0", "1|4-0", "1|6-0", "1|3-0", "1|4-0", "1|5-0", "1|3-1", "1|2-0", "1|3-0", "1|3-0", "1|3-0", "1|3-0", "1|3-0", "1|3-0", "1|4-0"]},
+            {date: "2026-01-21", teams: "Bayern München-Union Saint-Gilloise", predictions: ["1|6-0", "1|3-0", "1|5-1", "1|7-1", "1|5-1", "1|3-1", "1|4-0", "1|2-0", "1|3-0", "1|4-0", "1|4-0", "1|3-1", "1|2-1", "1|2-1", "1|5-0", "1|4-0"]},
+            {date: "2026-01-21", teams: "Juventus-Benfica", predictions: ["X|1-1", "X|2-2", "1|3-0", "1|2-1", "1|3-2", "X|2-2", "1|3-2", "1|2-1", "X|1-1", "1|2-1", "2|1-2", "1|2-1", "2|1-2", "1|2-1", "1|2-1", "1|2-1"]},
+            {date: "2026-01-21", teams: "Newcastle-PSV Eindhoven", predictions: ["1|1-0", "X|3-3", "1|1-0", "X|2-2", "1|2-1", "1|2-1", "X|1-1", "X|1-1", "1|2-1", "X|1-1", "1|2-1", "X|2-2", "X|2-2", "1|2-1", "X|1-1", "X|1-1"]},
+            {date: "2026-01-21", teams: "Marseille-Liverpool", predictions: ["X|2-2", "2|1-2", "2|0-2", "2|2-3", "X|2-2", "2|1-2", "2|1-2", "2|2-3", "X|2-2", "2|0-3", "2|1-2", "2|1-2", "2|1-3", "2|1-2", "2|1-2", "2|2-4"]},
+            {date: "2026-01-21", teams: "Slavia Praha-Barcelona", predictions: ["2|1-3", "2|1-3", "2|1-4", "2|0-3", "2|1-3", "2|0-4", "2|0-3", "2|1-3", "2|0-3", "2|0-3", "2|1-3", "2|0-3", "2|0-2", "2|1-2", "2|0-2", "2|1-3"]},
+            
+            {date: "2026-01-28", teams: "Ajax-Olympiakos", predictions: ["1|2-0", "1|1-0", "X|1-1", "1|2-1", "X|2-2", "1|1-0", "1|2-0", "2|0-1", "1|2-0", "1|2-0", "1|3-1", "1|2-1", "1|2-1", "2|1-2", "X|1-1", "X|1-1"]},
+            {date: "2026-01-28", teams: "Arsenal-Kairat Almaty", predictions: ["1|4-0", "1|2-0", "1|4-1", "1|5-1", "1|3-0", "1|4-0", "1|4-0", "1|2-1", "1|3-0", "1|4-0", "1|3-1", "1|4-0", "1|3-0", "1|2-1", "1|3-0", "1|3-1"]},
+            {date: "2026-01-28", teams: "Monaco-Juventus", predictions: ["2|1-2", "1|2-1", "2|0-2", "X|1-1", "X|1-1", "X|1-1", "X|2-2", "2|0-2", "X|2-2", "2|0-2", "1|2-1", "X|1-1", "2|1-2", "2|1-2", "X|1-1", "X|2-2"]},
+            {date: "2026-01-28", teams: "Athletic Bilbao-Sporting Portugal", predictions: ["1|2-0", "1|2-1", "1|1-0", "1|2-1", "X|1-1", "X|1-1", "X|1-1", "X|1-1", "1|2-1", "2|0-2", "1|2-0", "2|1-2", "X|2-2", "1|2-1", "1|2-1", "1|2-1"]},
+            {date: "2026-01-28", teams: "Atlético Madrid-Bodø/Glimt", predictions: ["1|3-0", "1|3-0", "1|4-1", "1|4-1", "1|2-1", "1|4-0", "1|3-0", "1|2-1", "1|3-1", "1|3-0", "1|2-1", "1|3-0", "1|2-1", "1|2-1", "1|5-0", "1|3-0"]},
+            {date: "2026-01-28", teams: "Bayer Leverkusen-Villarreal", predictions: ["1|4-1", "X|2-2", "2|1-3", "X|2-2", "1|2-1", "X|1-1", "X|1-1", "2|2-3", "2|1-3", "1|3-0", "2|1-2", "X|2-2", "X|1-1", "1|2-1", "X|1-1", "X|1-1"]},
+            {date: "2026-01-28", teams: "Borussia Dortmund-Inter Milan", predictions: ["X|2-2", "X|2-2", "X|1-1", "X|2-2", "X|2-2", "X|2-2", "1|2-1", "2|2-4", "X|2-2", "2|0-2", "2|1-2", "1|2-1", "X|2-2", "2|1-2", "2|1-2", "2|1-2"]},
+            {date: "2026-01-28", teams: "Brugge-Marseille", predictions: ["X|1-1", "X|2-2", "X|0-0", "1|2-1", "2|1-4", "2|1-2", "X|2-2", "X|2-2", "X|2-2", "2|0-2", "X|1-1", "2|1-2", "2|0-1", "2|1-2", "X|1-1", "2|1-3"]},
+            {date: "2026-01-28", teams: "Eintracht Frankfurt-Tottenham", predictions: ["1|2-1", "X|2-2", "2|1-3", "X|1-1", "X|1-1", "2|1-2", "1|3-1", "2|1-3", "2|0-2", "2|0-2", "2|1-2", "X|1-1", "2|1-3", "1|2-1", "2|0-2", "1|2-1"]},
+            {date: "2026-01-28", teams: "Barcelona-Copenhagen", predictions: ["1|3-0", "1|3-0", "1|3-0", "1|4-1", "1|5-1", "1|5-0", "1|4-1", "1|2-0", "1|3-0", "1|3-0", "1|4-0", "1|2-0", "1|2-0", "1|2-0", "1|4-0", "1|3-0"]},
+            {date: "2026-01-28", teams: "Liverpool-Qarabağ", predictions: ["1|4-0", "1|3-0", "1|4-0", "1|3-1", "1|5-1", "1|5-0", "1|4-0", "X|1-1", "1|3-0", "1|4-0", "1|3-0", "1|4-0", "1|3-1", "1|2-1", "1|4-0", "1|4-0"]},
+            {date: "2026-01-28", teams: "Manchester City-Galatasaray", predictions: ["1|5-1", "1|3-0", "1|4-1", "1|4-1", "1|2-1", "1|3-1", "1|3-0", "1|3-1", "1|2-0", "1|4-0", "1|3-0", "1|2-1", "1|2-0", "1|3-1", "1|2-0", "1|3-1"]},
+            {date: "2026-01-28", teams: "Pafos-Slavia Praha", predictions: ["X|3-3", "X|1-1", "2|1-2", "X|2-2", "X|2-2", "2|0-1", "1|1-0", "1|2-1", "2|0-2", "2|0-2", "2|0-1", "2|0-3", "X|1-1", "2|1-2", "X|1-1", "X|2-2"]},
+            {date: "2026-01-28", teams: "PSG-Newcastle", predictions: ["X|2-2", "1|2-1", "1|3-1", "1|3-0", "1|2-1", "1|2-0", "1|2-0", "1|3-0", "X|2-2", "1|4-0", "1|2-0", "1|3-2", "X|2-2", "1|2-1", "1|2-1", "1|3-1"]},
+            {date: "2026-01-28", teams: "PSV Eindhoven-Bayern München", predictions: ["2|0-2", "2|1-2", "2|1-4", "2|1-4", "X|1-1", "2|0-3", "2|1-2", "2|2-3", "X|1-1", "2|0-3", "2|1-3", "2|1-2", "2|1-3", "2|1-2", "2|1-2", "2|1-3"]},
+            {date: "2026-01-28", teams: "Union Saint-Gilloise-Atalanta", predictions: ["2|0-2", "X|2-2", "2|0-2", "2|0-1", "X|1-1", "1|2-1", "X|2-2", "1|2-1", "2|0-3", "2|0-3", "2|0-2", "2|1-3", "2|0-2", "2|1-2", "2|0-1", "2|1-2"]},
+            {date: "2026-01-28", teams: "Benfica-Real Madrid", predictions: ["X|2-2", "2|1-2", "2|1-2", "2|1-3", "X|2-2", "X|2-2", "2|0-2", "2|2-3", "2|2-3", "2|0-2", "2|1-2", "2|1-3", "2|1-2", "2|1-3", "2|1-2", "2|2-4"]},
+            {date: "2026-01-28", teams: "Napoli-Chelsea", predictions: ["X|1-1", "X|2-2", "2|1-3", "2|0-2", "X|3-3", "1|2-1", "1|2-1", "2|1-4", "2|2-3", "1|2-1", "1|2-1", "X|2-2", "X|2-2", "1|2-1", "X|1-1", "X|2-2"]}
+        ];
 
-            matchRows.forEach(row => {
-                if (selectedDate === 'all' || row.dataset.date === selectedDate) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
-                }
+        // Función para crear las tarjetas de partidos
+        function createMatchCards() {
+            const container = document.getElementById('matchesContainer');
+            container.innerHTML = '';
+            
+            // Verificar si hay partidos para mostrar
+            if (matchesData.length === 0) {
+                container.innerHTML = '<div class="no-matches">No hay partidos disponibles</div>';
+                return;
+            }
+            
+            matchesData.forEach(match => {
+                const matchCard = document.createElement('div');
+                matchCard.className = 'match-card';
+                matchCard.dataset.date = match.date;
+                
+                // Cabecera del partido
+                const header = document.createElement('div');
+                header.className = 'match-header';
+                header.innerHTML = `
+                    <div class="match-date">${match.date}</div>
+                    <div class="match-teams">${match.teams}</div>
+                `;
+                
+                // Grid de predicciones
+                const predictionsGrid = document.createElement('div');
+                predictionsGrid.className = 'predictions-grid';
+                
+                // Crear elementos de predicción para cada participante
+                match.predictions.forEach((prediction, index) => {
+                    const predictionItem = document.createElement('div');
+                    predictionItem.className = 'prediction-item';
+                    predictionItem.innerHTML = `
+                        <span class="participant-name">${participants[index]}</span>
+                        <span class="prediction-result">${prediction}</span>
+                    `;
+                    predictionsGrid.appendChild(predictionItem);
+                });
+                
+                // Ensamblar la tarjeta
+                matchCard.appendChild(header);
+                matchCard.appendChild(predictionsGrid);
+                container.appendChild(matchCard);
             });
         }
+
+        // Función para generar las opciones del filtro ordenadas cronológicamente
+        function generateDateFilterOptions() {
+            const dateFilter = document.getElementById('dateFilter');
+            
+            // Obtener todas las fechas únicas
+            const uniqueDates = [...new Set(matchesData.map(match => match.date))];
+            
+            // Ordenar las fechas cronológicamente
+            uniqueDates.sort((a, b) => new Date(a) - new Date(b));
+            
+            // Limpiar el select
+            dateFilter.innerHTML = '';
+            
+            // Agregar la opción "Todos los partidos"
+            const allOption = document.createElement('option');
+            allOption.value = 'all';
+            allOption.textContent = 'Todos los partidos';
+            dateFilter.appendChild(allOption);
+            
+            // Agregar las fechas ordenadas
+            uniqueDates.forEach(date => {
+                const option = document.createElement('option');
+                option.value = date;
+                option.textContent = date;
+                dateFilter.appendChild(option);
+            });
+        }
+
+        // Función de filtrado
+        function filterMatches() {
+            const selectedDate = document.getElementById('dateFilter').value;
+            const matchCards = document.querySelectorAll('.match-card');
+            let hasVisibleMatches = false;
+
+            matchCards.forEach(card => {
+                if (selectedDate === 'all' || card.dataset.date === selectedDate) {
+                    card.style.display = 'block';
+                    hasVisibleMatches = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Mostrar mensaje si no hay partidos para la fecha seleccionada
+            const container = document.getElementById('matchesContainer');
+            if (!hasVisibleMatches) {
+                container.innerHTML = '<div class="no-matches">No hay partidos para la fecha seleccionada</div>';
+            }
+        }
+
+        // Inicializar la página
+        function init() {
+            generateDateFilterOptions();
+            createMatchCards();
+        }
+
+        // Ejecutar la inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
